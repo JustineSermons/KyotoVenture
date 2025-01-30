@@ -1,0 +1,239 @@
+/* Reset everything */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove padding if any */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Travel Highlights Section */
+.travel-highlights {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400; /* Normal weight */
+    font-size: 32px; /* Same size as the map heading */
+    text-align: left; /* Align the text to the left */
+    color: #000000; /* Same color as the map text */
+    margin-bottom: 20px; /* Space below the heading */
+    margin-left: 370px; /* Align text to the left of the container */
+    padding-left: 20px; /* Add padding to the left for alignment */
+}
+
+.gallery {
+    margin-top: 100px;
+}
+
+/* Travel Highlights Section */
+.gallery-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 10px;
+    width: 1062px; /* Adjusted to match the map width */
+    margin: 0 auto; /* Centers the gallery container */
+}
+
+
+.gallery-container > :nth-child(1) {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+}
+
+.gallery-container > :nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.gallery-container > :nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.gallery-container > :nth-child(4) {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    height: 100%;
+}
+
+.gallery-item-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-item {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.image-caption {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: #DEF7E4;
+    color: black;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 8px;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+/* Map Section */
+.map {
+    width: 1062px;
+    height: 576px;
+    margin-top: 150px; /* Increased margin-top to add more space between Travel Highlights and Explore Map */
+    margin-bottom: 150px;
+    margin-left: auto; /* Centers the map horizontally */
+    margin-right: auto; /* Centers the map horizontally */
+}
+
+.map h2 {
+    width: 217.59px;
+    height: 48px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 38px;
+    color: #000000;
+    margin-bottom: 20px; /* Adds space below the "Explore Map" heading */
+}
+
+.kyoto-map {
+    width: 1060px;
+    height: 504px;
+    background: url('img/map.jpg'); /* Ensure this path is correct */
+    background-size: cover;
+    border-radius: 20px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #cdbade;
+    padding: 40px 20px;
+    width: 100%; /* Ensure the footer spans the entire width */
+    position: relative; /* Ensure footer positioning works */
+    left: 0; /* Align it with the left edge */
+    right: 0; /* Align it with the right edge */
+    margin-left: 0; /* Remove any left margin */
+    margin-right: 0; /* Remove any right margin */
+}
+
+  
+  /* Logo Section */
+  .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 88px;
+    height: 110.95px;
+    margin-bottom: 20px; /* Optional space between logo and other sections */
+    margin-left: 100px;
+  }
+  
+  .logo-image {
+    width: 88px;
+    height: 110.95px;
+  }
+  
+  .logo-text {
+    width: 166px;
+    height: 33px;
+    font-family: 'Noto Serif', serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    color: #1F2B59;
+    margin-top: 8px;
+  }
+  
+  /* Grid Layout for Footer Sections */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 equal-width columns */
+    gap: 20px;
+    color: #000;
+  }
+  
+  .destination, .guide, .support, .news {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .destination p, .guide p, .support p, .news p {
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  .destination p strong, .guide p strong, .support p strong, .news p strong {
+    font-weight: bold;
+  }
+  
+  /* Button Styling for Newsletter */
+  .subscribe {
+    background-color: #013d79;
+    color: white;
+    border: none;
+    height: 30px;
+    width: 80px;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+  
+  .email-bar {
+    color: #ebe3f2;
+  }
+  
+  .receive {
+    font-size: 13px;
+    padding-bottom: 5px;
+  }
+  
+  /* Optional media query for responsive layout */
+  @media (max-width: 768px) {
+    .logo-grid {
+      grid-template-columns: 1fr 1fr; /* Stack the footer sections on smaller screens */
+      padding: 20px;
+    }
+  }
+  
+/* Remove underline from all footer links */
+footer a {
+    text-decoration: none;
+    color: inherit; /* Keep the text color as it is */
+}
+
+/* Add slight opacity change on hover for all links except the logo */
+footer a:hover {
+    opacity: 0.7; /* Adjust the opacity to your liking */
+}
+
+/* Exclude the logo anchor tag from opacity change */
+footer .logo a:hover {
+    opacity: 1 !important; /* Prevent opacity change on logo hover */
+}
+
