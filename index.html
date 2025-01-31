@@ -18,60 +18,103 @@
   </head>
   <body>
      <!-- Navigation -->
-     <nav class="kyotoVentureNavBar">
-      <div class="kyotoVentureLogo">
-        <div class="logo"><img src="assets/icons/logo.svg"></div>
-        <div class="title">KyotoVenture</div>
+<nav class="top-nav" id="topNavBar">
+    <div class="logo-div">
+      <a href="index.html" class="logo no-hover">
+        <img src="assets/icons/logo.svg" alt="KyotoVenture Logo for Kyoto, Japan Travel Site" class="logo_img"> KyotoVenture
+      </a>
+    </div>
+    <div class="mobile-dropstart"></div>
+    <a class="active" href="index.html">Home</a>
+
+    <div class="dropdown">
+      <a href="destinations.html" class="dropbtn">Destinations
+        <i class="fa-solid fa-chevron-down arrow-flip"></i>
+      </a>
+      <div class="dropdown-content">
+        <a href="kyoto.html">Kyoto City</a>
+        <a href="arashiyama.html">Arashiyama</a>
+        <a href="kameoka.html">Kameoka</a>
+        <a href="nara.html">Nara</a>
+        <a href="uji.html">Uji</a>
       </div>
-      <ul class="navbar-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#">Destinations</a>
-        <ul class="dropdown">
-          <li><a href="destinations.html">Destinations</a></li>
-          <li><a href="#">Kyoto City</a></li>
-          <li><a href="#">Arashiyama</a></li>
-          <li><a href="#">Nara</a></li>
-          <li><a href="#">Uji</a></li>
-          <li><a href="#">Kameoka</a></li>
-        </ul>
-        </li>
-
-        <li><a href="activities.html">Activities</a></li>
-        <li><a href="">Itineraries</a>
-        <ul class="dropdown">
-          <li><a href="#">Itineraries</a></li>
-          <li><a href="#">Create Itinerary</a></li>
-          <li><a href="#">Wishlist</a></li>
-        </ul>
-        </li>
-        <li><a href="">About</a>
-        <ul class="dropdown">
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">FAQs</a></li>
-        </ul>
-        </li>
-        <li><a href="#">
-        <div class="profile-icon"><i class="fa-regular fa-user navProfileIcon"></i></div></a>
-        <ul class="dropdown">
-          <li><a href="#">Login</a></li>
-          <li><a href="#">Sign Up</a></li>
-        </ul>
-      </li>
-      </ul>
-      <!-- <div class="profile-container">
-      </div> -->
-    </nav>
-     <div class="page-layout">
-     <h1>Events</h1>
-     <div class="container-hero">
-      <div class="hero">
-      <img src="assets/images/gion matsuri.jpg" alt="Gion Matsuri Festival">
-      <div class="title-button">Gion Matsuri Festival</div>
     </div>
-    </div>
-  </div>
 
+    <div class="dropdown">
+      <a href="activities.html" class="dropbtn">Activities</a>
+    </div>
+
+    <div class="dropdown">
+      <a href="itineraries.html" class="dropbtn">Itineraries
+        <i class="fa-solid fa-chevron-down arrow-flip"></i></a>
+      <div class="dropdown-content">
+        <a href="itineraries.html">Itineraries</a>
+        <a href="create-itinerary.html">Create Itinerary</a>
+        <a href="wishlist.html">Wishlist</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <a href="about.html" class="dropbtn">About
+        <i class="fa-solid fa-chevron-down arrow-flip"></i>
+      </a>
+      <div class="dropdown-content">
+        <a href="faqs.html">FAQs</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="#.html">About Us</a>
+      </div>
+    </div>
+
+    <a href="faqs.html" class="no-hover">
+      <i class="fa-solid fa-circle-question" style="font-size: 24px; padding-left: 14px;"></i>
+    </a>
+
+    <div class="dropdown no-hover">
+      <a href="account.html" class="dropbtn">
+        <i class="fa-solid fa-circle-user" style="font-size: 32px; padding-left: 8px;"></i>
+      </a>
+      <div class="dropdown-content">
+        <a href="login.html">Log In
+          <i class="fa-solid fa-arrow-right-to-bracket" style="font-size: 24px; padding-left: 40px;"></i>
+        </a>
+        <a href="signup.html">Sign Up
+          <i class="fa-solid fa-user-plus" style="font-size: 20px; padding-left: 24px;"></i>
+        </a>
+        <a href="settings.html">Settings
+          <i class="fa-solid fa-gear" style="font-size: 20px; padding-left: 16px;"></i>
+        </a>
+        <a href="logout.html">Log Out
+          <i class="fa-solid fa-arrow-right-from-bracket" style="font-size: 24px; padding-left: 16px;"></i>
+        </a>
+      </div>
+    </div>
+
+    <a href="javascript:void(0);" style="font-size: 2em; float: right; padding: 32px;" class="icon" onclick="toggleMenuBar()">
+      <i class="fa-solid fa-bars"></i>
+    </a>
+  </nav>
+
+  <!-- Hero Section of Gallery with Events -->
+  <section class="hero-gallery">
+    <div class="gallery-container">
+      <button class="arrow left-arrow" onclick="prevImage()">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <div class="gallery">
+        <img src="assets/images/gion matsuri.jpg" alt="Gion Matsuri" class="gallery-image" />
+        <img src="assets/images/aoi matsuri.jpeg" alt="Aoi Matsuri" class="gallery-image" />
+        <img src="assets/images/To-ji Temple Flea Market (Kobo-san).jpeg" alt="To-ji Temple Flea Market" class="gallery-image" />
+        <img src="assets/images/Jidai Matsuri.jpg" alt="Jidai Matsuri" class="gallery-image" />
+        <img src="assets/images/Arashiyama Hanatouro.jpeg" alt="Arashiyama Hanatouro" class="gallery-image" />
+      </div>
+      <button class="arrow right-arrow" onclick="nextImage()">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+    <div class="gallery-label">Event 1</div>
+    <button class="details-button" onclick="goToDetails()">Event Details</button>
+  </section>
+    
 <!-- Travel Highlights Section -->
 <section class="gallery">
   <h2 class="travel-highlights">Travel Highlights</h2>
