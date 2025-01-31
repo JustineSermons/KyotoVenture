@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sign Up - KyotoVenture</title>
+        <script src="js/signup.js"></script>
+        <link rel="stylesheet" href="css/signup.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+
+    </head>
+    <body>
+
+  <nav class="top-nav" id="topNavBar">
+    <div class="logo-div">
+      <a href="index.html" class="logo no-hover">
+        <img src="assets/icons/logo.svg" alt="KyotoVenture Logo for Kyoto, Japan Travel Site" class="logo_img"> KyotoVenture
+      </a>
+    </div>
+    <div class="mobile-dropstart"></div>
+    <a class="active" href="index.html">Home</a>
+
+    <div class="dropdown">
+      <a href="destinations.html" class="dropbtn">Destinations
+        <i class="fa-solid fa-chevron-down arrow-flip"></i>
+      </a>
+      <div class="dropdown-content">
+        <a href="kyoto.html">Kyoto City</a>
+        <a href="arashiyama.html">Arashiyama</a>
+        <a href="kameoka.html">Kameoka</a>
+        <a href="nara.html">Nara</a>
+        <a href="uji.html">Uji</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <a href="activities.html" class="dropbtn">Activities</a>
+    </div>
+
+    <div class="dropdown">
+      <a href="itineraries.html" class="dropbtn">Itineraries
+        <i class="fa-solid fa-chevron-down arrow-flip"></i></a>
+      <div class="dropdown-content">
+        <a href="itineraries.html">Itineraries</a>
+        <a href="create-itinerary.html">Create Itinerary</a>
+        <a href="wishlist.html">Wishlist</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <a href="about.html" class="dropbtn">About
+        <i class="fa-solid fa-chevron-down arrow-flip"></i>
+      </a>
+      <div class="dropdown-content">
+        <a href="faqs.html">FAQs</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="#.html">About Us</a>
+      </div>
+    </div>
+
+    <a href="faqs.html" class="no-hover">
+      <i class="fa-solid fa-circle-question" style="font-size: 24px; padding-left: 14px;"></i>
+    </a>
+
+    <div class="dropdown no-hover">
+      <a href="account.html" class="dropbtn">
+        <i class="fa-solid fa-circle-user" style="font-size: 32px; padding-left: 8px;"></i>
+      </a>
+      <div class="dropdown-content">
+        <a href="login.html">Log In
+          <i class="fa-solid fa-arrow-right-to-bracket" style="font-size: 24px; padding-left: 40px;"></i>
+        </a>
+        <a href="signup.html">Sign Up
+          <i class="fa-solid fa-user-plus" style="font-size: 20px; padding-left: 24px;"></i>
+        </a>
+        <a href="settings.html">Settings
+          <i class="fa-solid fa-gear" style="font-size: 20px; padding-left: 16px;"></i>
+        </a>
+        <a href="logout.html">Log Out
+          <i class="fa-solid fa-arrow-right-from-bracket" style="font-size: 24px; padding-left: 16px;"></i>
+        </a>
+      </div>
+    </div>
+
+    <a href="javascript:void(0);" style="font-size: 2em; float: right; padding: 32px;" class="icon" onclick="toggleMenuBar()">
+      <i class="fa-solid fa-bars"></i>
+    </a>
+  </nav>
+        <!-- SignUp Form -->
+        <div class="form-wrapper">
+            <h1>Account Settings</h1>
+            <h2>View E-mail for password reset link</h2>
+            <p id="error-message"></p>
+            <form id="form">
+                <div>
+                    <label for="email-input">
+                        <img src="assets/icons/email.svg" alt="Email Icon" />
+                    </label>
+                    <input required
+                        type="email"
+                        name="email"
+                        id="email-input"
+                        placeholder="Email"/>
+                </div>
+                <button type="submit">Send Email</button>
+            </form>
+        </div>
+        <header></header>
+    </body>
+</html>
