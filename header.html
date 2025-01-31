@@ -1,17 +1,29 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/header.css">
+  <script src="https://kit.fontawesome.com/5e8cd39909.js" crossorigin="anonymous"></script>
+  <title>Home - Kyoto Travel</title>
+</head>
+
+<body>
+
   <nav class="top-nav" id="topNavBar">
     <div class="logo-div">
-      <a href="index.html" class="logo no-hover">
-        <img src="assets/icons/logo.svg"
-        alt="KyotoVenture Logo for Kyoto, Japan Travel Site"
-        class="logo_img">
-        KyotoVenture</a>
+      <a href="header.html" class="logo no-hover">
+        <img src="assets/icons/logo.svg" alt="KyotoVenture Logo for Kyoto, Japan Travel Site" class="logo_img"> KyotoVenture
+      </a>
     </div>
+    <div class="mobile-dropstart"></div>
+    <a class="active" href="header.html">Home</a>
 
-    <a class="active" href="index.html">Home</a>
     <div class="dropdown">
       <a href="destinations.html" class="dropbtn">Destinations
-        <i class="fa-solid fa-chevron-down arrow-flip"></i></a>
+        <i class="fa-solid fa-chevron-down arrow-flip"></i>
+      </a>
       <div class="dropdown-content">
         <a href="kyoto.html">Kyoto City</a>
         <a href="arashiyama.html">Arashiyama</a>
@@ -29,16 +41,16 @@
       <a href="itineraries.html" class="dropbtn">Itineraries
         <i class="fa-solid fa-chevron-down arrow-flip"></i></a>
       <div class="dropdown-content">
-        <a href="profile.html">Profile</a>
+        <a href="itineraries.html">Itineraries</a>
+        <a href="create-itinerary.html">Create Itinerary</a>
         <a href="wishlist.html">Wishlist</a>
-        <a href="#.html">Create Itinerary</a>
-        <a href="#.html">Itinerary Planner</a>
       </div>
     </div>
 
     <div class="dropdown">
       <a href="about.html" class="dropbtn">About
-        <i class="fa-solid fa-chevron-down arrow-flip"></i></a>
+        <i class="fa-solid fa-chevron-down arrow-flip"></i>
+      </a>
       <div class="dropdown-content">
         <a href="faqs.html">FAQs</a>
         <a href="contact.html">Contact Us</a>
@@ -47,39 +59,57 @@
     </div>
 
     <a href="faqs.html" class="no-hover">
-      <i class="fa-solid fa-circle-question"
-      style="font-size: 24px; padding-left: 14px;"></i>
+      <i class="fa-solid fa-circle-question" style="font-size: 24px; padding-left: 14px;"></i>
     </a>
-    
+
     <div class="dropdown no-hover">
       <a href="account.html" class="dropbtn">
-        <i class="fa-solid fa-circle-user"
-        style="font-size: 32px; padding-left: 8px;"></i>
+        <i class="fa-solid fa-circle-user" style="font-size: 32px; padding-left: 8px;"></i>
       </a>
       <div class="dropdown-content">
         <a href="login.html">Log In
-          <i class="fa-solid fa-arrow-right-to-bracket"
-          style="font-size:24px; padding-left: 40px;"></i>
+          <i class="fa-solid fa-arrow-right-to-bracket" style="font-size: 24px; padding-left: 40px;"></i>
         </a>
         <a href="signup.html">Sign Up
-          <i class="fa-solid fa-user-plus"
-          style="font-size:20px; padding-left: 24px;"></i>
+          <i class="fa-solid fa-user-plus" style="font-size: 20px; padding-left: 24px;"></i>
         </a>
         <a href="settings.html">Settings
-          <i class="fa-solid fa-gear"
-            style="font-size:20px; padding-left: 16px;">
-          </i>
+          <i class="fa-solid fa-gear" style="font-size: 20px; padding-left: 16px;"></i>
         </a>
         <a href="logout.html">Log Out
-          <i class="fa-solid fa-arrow-right-from-bracket" 
-          style="font-size:24px; padding-left: 16px;"></i>
+          <i class="fa-solid fa-arrow-right-from-bracket" style="font-size: 24px; padding-left: 16px;"></i>
         </a>
       </div>
     </div>
-    
-    <a href="javascript:void(0);" 
-    style="font-size: 2em; float: right; padding: 1em;" 
-    class="icon" onclick="toggleMenuBar()">
+
+    <a href="javascript:void(0);" style="font-size: 2em; float: right; padding: 32px;" class="icon" onclick="toggleMenuBar()">
       <i class="fa-solid fa-bars"></i>
     </a>
   </nav>
+
+  <!-- Hero Section of Gallery with Events -->
+  <section class="hero-gallery">
+    <div class="gallery-container">
+      <button class="arrow left-arrow" onclick="prevImage()">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <div class="gallery">
+        <img src="assets/images/gion matsuri.jpg" alt="Gion Matsuri" class="gallery-image" />
+        <img src="assets/images/aoi matsuri.jpeg" alt="Aoi Matsuri" class="gallery-image" />
+        <img src="assets/images/To-ji Temple Flea Market (Kobo-san).jpeg" alt="To-ji Temple Flea Market" class="gallery-image" />
+        <img src="assets/images/Jidai Matsuri.jpg" alt="Jidai Matsuri" class="gallery-image" />
+        <img src="assets/images/Arashiyama Hanatouro.jpeg" alt="Arashiyama Hanatouro" class="gallery-image" />
+      </div>
+      <button class="arrow right-arrow" onclick="nextImage()">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+    <div class="gallery-label">Event 1</div>
+    <button class="details-button" onclick="goToDetails()">Event Details</button>
+  </section>
+
+  <script src="js/script.js"></script>
+
+</body>
+
+</html>
