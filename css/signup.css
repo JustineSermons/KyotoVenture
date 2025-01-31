@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
+:root {
+    --accent-color: #013D79;
+    --base-color: #FAFEFB;
+    --text-color: #2B3241;
+    --input-color: #E6ECF2;
+    --hover-color: #CFF3D7;
+}
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+html {
+    font-family: "Lato", sans-serif;
+    font-size: 12pt;
+    color: var(--text-color);
+    text-align: center;
+}
+/* Styles Logo Div in NavBar*/
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    color: #013D79;
+    font-family: "Noto Serif", serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: normal;
+    gap: 8px;
+
+  }
+
+body {
+    min-height: 100vh;
+    background-image: url('../assets/images/loginpic.jpg');
+    background-size: cover;
+    background-position: right;
+    overflow: hidden;
+}
+.form-wrapper {
+    box-sizing: border-box;
+    background-color: var(--base-color);
+    height: 100vh;
+    width: max(40%, 600px);
+    padding: 10px;
+    border-radius: 0 20px 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+h1 {
+    font-size: 32px;
+    font-weight: 600;
+    text-align: left;
+}
+h2 {
+    font-size: 24px;
+    font-weight: 500;
+}
+form {
+    width: min(400px, 100%);
+    margin-top: 20px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+form > div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+form label {
+    flex-shrink: 0;
+    height: 50px;
+    width: 50px;
+    background-color: var(--input-color);
+    fill: var(--base-color);
+    color: var(--base-color);
+    border-radius: 10px 0 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 500;
+}
+form input {
+    box-sizing: border-box;
+    flex-grow: 1;
+    min-width: 0;
+    height: 50px;
+    padding: 1em;
+    font: inherit;
+    border-radius: 0px 8px 8px 0px;
+    border: 2px solid var(--input-color);
+    border-left: none;
+    background-color: var(--input-color);
+    transition: 150ms ease;
+}
+form input:hover {
+    border-color: var(--accent-color);
+}
+form input:focus {
+    outline: none;
+    border-color: var(--text-color);
+}
+div:has(input:focus) > label {
+    background-color: var(--text-color);
+}
+form input::placeholder {
+    color: var(--text-color);
+}
+form button {
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    padding: 0.85em 4em;
+    background-color: var(--accent-color);
+    color: var(--base-color);
+    font: inherit;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 150ms ease;
+}
+form button:hover {
+    background-color: var(--hover-color);
+    color: var(--accent-color);
+}
+form button:focus {
+    outline: none;
+    background-color: var(--text-color);
+}
+a {
+    text-decoration: none;
+    color: var(--accent-color);
+}
+a:hover {
+    text-decoration: underline;
+}
+@media (max-width: 1100px) {
+    .form-wrapper {
+        width: min(600px, 100%);
+        border-radius: 0;
+    }
+}
+form div.incorrect label {
+    background-color: #F44747;
+}
+form div.incorrect input {
+    border-color: #F44747;
+}
+#error-message {
+    color: #F44747;
+}
