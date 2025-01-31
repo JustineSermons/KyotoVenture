@@ -79,66 +79,12 @@ allInputs.forEach(input => {
   })
 })
 
-function handleCredentialResponse(response) {
-    console.log("Encoded JWT ID Token: " + response.credential);
-    
-    // Decode the token (for demonstration purposes)
-    const userInfo = parseJwt(response.credential);
-
-    console.log("User Info:", userInfo);
-
-    // Display user info (optional)
-    document.getElementById('error-message').innerText = `Welcome, ${userInfo.name}!`;
-
-    // You can send this token to your backend for verification
-}
-
-// Function to decode JWT (for debugging)
-function parseJwt(token) {
-    let base64Url = token.split('.')[1];
-    let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    let jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-
-    return JSON.parse(jsonPayload);
-}
-function handleCredentialResponse(response) {
-    const userInfo = parseJwt(response.credential);
-
+/* UNFINISHED Function )
+function backend later
     // Store user info in localStorage (optional)
     localStorage.setItem("user", JSON.stringify(userInfo));
 
     // Redirect user after login
     window.location.href = "dashboard.html";
 }
-
-
-form.addEventListener('submit', (e) => {
-  let errors = []
-
-  if(firstname_input){
-    // If we have a firstname input then we are in the signup
-    errors = getSignupFormErrors(firstname_input.value, email_input.value, password_input.value, repeat_password_input.value)
-  }
-  else{
-    // If we don't have a firstname input then we are in the login
-    errors = getLoginFormErrors(email_input.value, password_input.value)
-  }
-
-  if(errors.length > 0){
-    // If there are any errors
-    e.preventDefault()
-    error_message.innerText  = errors.join(". ")
-  }
-})
-
-function handleCredentialResponse(response) {
-    const userInfo = parseJwt(response.credential);
-
-    // Store user info in localStorage (optional)
-    localStorage.setItem("user", JSON.stringify(userInfo));
-
-    // Redirect user after login
-    window.location.href = "index.html";
-}
+*/
