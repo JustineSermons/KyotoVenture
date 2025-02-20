@@ -17,14 +17,16 @@ h1 {
   color: rgb(0, 0, 0);
 }
 
-/* Banner Styling */
 .banner {
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), #CDBADE;
-  padding-top: 100px; /* Top padding */
-  padding-bottom: 60px; /* Bottom padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0px; /* Top padding */
+  padding-bottom: 0px; /* Bottom padding */
   text-align: center;
-  margin-bottom: 40px;
-  height: 95vh; /* Slightly reduced height */
+  height: 80vh; /* Slightly reduced height */
   overflow: hidden;
 }
 
@@ -165,7 +167,7 @@ h1 {
 
 /* Scrollable Cards Section */
 .scrollable-cards-section {
-  margin-top: 40px; /* Add more space between Section 2 and Section 3 */
+  margin-top: 150px; /* Add more space between Section 2 and Section 3 */
   margin-bottom: 150px; /* Add more space below Section 3 */
   padding: 40px 20px; /* Keep existing padding */
   background-color: #ffffff; /* Force white background */
@@ -357,7 +359,7 @@ body {
 
 /* Kiyomizu-Dera (Left Column, Spanning the Full Height) */
 .featured-item.kiyomizu {
-  background: url('../assets/images/kiyomizu_dera1.jpg');
+  background: url('/assets/images/kiyomizu_dera1.jpg');
   height: 500px; /* Full height */
   width: 100%;
   border-radius: 8px;
@@ -388,7 +390,7 @@ body {
 
 /* Kinkakuji Temple (Top-Right) */
 .featured-item.kinkakuji {
-  background: url('../assets/images/kinkakuji_temple1.jpg');
+  background: url('/assets/images/kinkakuji_temple1.jpg');
   height: 230px; /* Adjusted height */
   width: 100%;
   border-radius: 8px;
@@ -418,7 +420,7 @@ body {
 
 /* Fushimi Inari Shrine (Below Kinkakuji) */
 .featured-item.fushimi {
-  background: url('../assets/images/fushimi_inari_temple1.jpg');
+  background: url('/assets/images/fushimi_inari_temple1.jpg');
   height: 250px; /* Adjusted height */
   width: 100%;
   border-radius: 6px;
@@ -488,7 +490,15 @@ body {
 /* Footer Styling */
 footer {
   background-color: #cdbade;
-  padding: 40px 20px;
+  padding: 20px 20px; /* Reduced padding for a shorter footer */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  justify-content: flex-start; /* Align to the top */
+  text-align: center; /* Center text within the footer */
+  width: 100%;
+  position: relative; /* Allow positioning of the logo */
+  min-height: 200px; /* Reduced minimum height for shorter footer */
 }
 
 /* Logo Section */
@@ -497,16 +507,18 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
+  position: absolute; /* Absolute positioning to control placement */
+  left: 10%;
+  top: 50%; /* Vertically center the logo - change this value to adjust the vertical position */
+  transform: translateY(-50%); /* Adjust for exact vertical centering */
   width: 88px;
   height: 110.95px;
-  margin-bottom: 20px; /* Optional space between logo and other sections */
-  margin-left: 100px;
+  text-align: center; /* Ensure the logo text is centered */
 }
 
 .logo-image {
-  width: 88px;
-  height: 110.95px;
+  width: 100px;
+  height: auto;
 }
 
 .logo-text {
@@ -518,6 +530,7 @@ footer {
   line-height: 33px;
   color: #1F2B59;
   margin-top: 8px;
+  text-align: center; /* Ensures text is centered */
 }
 
 /* Grid Layout for Footer Sections */
@@ -526,62 +539,111 @@ footer {
   grid-template-columns: repeat(5, 1fr); /* 5 equal-width columns */
   gap: 20px;
   color: #000;
+  width: 100%; /* Ensure the grid takes the full width of the footer */
+  justify-items: flex-start; /* Align items to the left */
+  text-align: left; /* Align text to the left for sections */
 }
 
-.destination, .guide, .support, .news {
+/* Align destination, support, and newsletter sections */
+.destination, .support, .news {
   display: flex;
+  left: 50%;
   flex-direction: column;
+  align-items: flex-start; /* Align items to the left */
+  text-align: left; /* Ensure text is aligned to the left */
+  justify-content: flex-start; /* Align to the top */
+  width: 100%; /* Ensure they take full width */
+  margin-top: 30px;
+  margin-bottom: 20px; /* Add margin to create equal spacing between sections */
+  padding-left: 100px; /* Shift the sections to the right without affecting text size */
+  margin-left: 100px; /* Move sections towards the right */
 }
 
-.destination p, .guide p, .support p, .news p {
+/* Adjust other properties to maintain consistency */
+.destination p, .support p {
+  font-size: 20px;
+  
   margin: 0;
-  line-height: 1.5;
+  line-height: 2;
 }
 
-.destination p strong, .guide p strong, .support p strong, .news p strong {
+/* Keep strong text bold in both sections */
+.destination p strong, .support p strong {
   font-weight: bold;
 }
 
-/* Button Styling for Newsletter */
-.subscribe {
-  background-color: #013d79;
-  color: white;
-  border: none;
-  height: 30px;
-  width: 80px;
-  border-radius: 8px;
-  margin-top: 10px;
+/* Newsletter Section - Adjusted */
+.news {
+  position: relative;
+  width: 350px; /* Adjust width to match the size of the other sections */
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000;
+  padding: 0;
+  padding-left: 20px; /* Move the newsletter section to the right */
+  text-align: left; /* Align text left */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align contents to the left */
+  justify-content: flex-start; /* Align contents at the top */
+  margin-left: 100px; /* Shift the newsletter section more to the right */
+  margin-top: 30px;
 }
 
+
+
+/* Adjust the paragraph text below the header */
+.news p {
+  font-size: 24px;
+  margin-bottom: 10px; /* Reduced margin for better alignment */
+  font-weight: bold;
+  text-align: left; /* Ensure alignment matches other sections */
+}
+
+/* Adjust the paragraph text below the header */
+.news .receive {
+  font-size: 16px !important; /* Force smaller font size */
+  margin-bottom: 15px; /* Adjust bottom margin for alignment */
+  font-weight: 400 !important; /* Force unbold text */
+  color: #000;
+}
+
+/* Adjust email bar layout to stack the input and button vertically */
 .email-bar {
-  color: #ebe3f2;
+  display: flex;
+  flex-direction: column; /* Stack input and button vertically */
+  justify-content: flex-start; /* Align to the start of the section */
+  align-items: flex-start; /* Align to the start of the section */
+  margin-bottom: 15px;
+  gap: 10px; /* Reduce space between input and button */
+  width: 100%; /* Ensure the email bar takes full width of the parent */
 }
 
-.receive {
-  font-size: 13px;
-  padding-bottom: 5px;
+
+.email-input {
+  width: 100%; /* Full width of the newsletter section */
+  height: 40px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  background-color: white; /* White background for the input box */
 }
 
-/* Optional media query for responsive layout */
-@media (max-width: 768px) {
-  .logo-grid {
-    grid-template-columns: 1fr 1fr; /* Stack the footer sections on smaller screens */
-    padding: 20px;
-  }
+.subscribe {
+  width: 35%; /* Full width of the newsletter section */
+  background-color: #013D79; /* Blue */
+  color: white;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-/* Remove underline from all footer links */
-footer a {
-  text-decoration: none;
-  color: inherit; /* Keep the text color as it is */
-}
-
-/* Add slight opacity change on hover for all links except the logo */
-footer a:hover {
-  opacity: 0.7; /* Adjust the opacity to your liking */
-}
-
-/* Exclude the logo anchor tag from opacity change */
-footer .logo a:hover {
-  opacity: 1 !important; /* Prevent opacity change on logo hover */
+.subscribe:hover {
+  background-color: #0056b3; /* Darker blue on hover */
 }
