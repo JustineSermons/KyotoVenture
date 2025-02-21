@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const emailInput = document.getElementById('email-input');
   const passwordInput = document.getElementById('password-input');
   const loginError = document.getElementById('login-error-message');
+  
 
   loginForm.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -40,3 +41,4 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   });
 });
+
