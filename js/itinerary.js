@@ -70,21 +70,23 @@ async function fetchItineraries() {
           itineraryElement.classList.add("itin-container");
   
           itineraryElement.innerHTML = `
-            <div class="itin-container">
-              <p class="defitin">
-                <span class="star">&#9733;</span> ${itinerary.itinerary_name}
-              </p>
-              <div class="image-container">
-                <img class="bamb" src="${
-                  itinerary.image
-                    ? "assets/images/" + itinerary.image
-                    : "assets/images/bamboogrove.png"
-                }" alt="${itinerary.itinerary_name}">
-              </div>
+          <div class="itin-container">
+            <p class="defitin">
+              <span <i class="fa-solid fa-star star"></i></span> ${itinerary.itinerary_name}
+            </p>
+            <div class="image-container">
+              <img class="bamb" src="${
+                itinerary.image
+                  ? "assets/images/" + itinerary.image
+                  : "assets/images/bamboogrove.png"
+              }" alt="${itinerary.itinerary_name}">
+            </div>
+            <div class="button-container">
               <button class="foodbutton view-btn" data-id="${itinerary.id}">View</button>
               <button class="foodbutton delete-btn" data-id="${itinerary.id}">Delete</button>
             </div>
-          `;
+          </div>
+        `;
   
           itinerariesContainer.appendChild(itineraryElement);
   
