@@ -516,5 +516,71 @@ app.delete("/api/itinerary/:itineraryId/activities/:activityId", authenticateTok
     });
 });
 
+// Update/Move an activity to a different day in the itinerary
+app.put("/api/itinerary/:itineraryId/activities/:activityId/move", authenticateToken, async (req, res) => {
+  const { itineraryId, activityId } = req.params;
+  const { day } = req.body;
+  const userId = req.user.id;
+
+// Validation
+  if (!day || isNaN(parseInt(day)) || parseInt(day) < 1) {
+    return res.status(400).json({ message: "Invalid day value provided." });
+  }
+
+  try {
+    // Check if the itinerary exists and belongs to the user
+    const itineraryCheck = await db.query(
+      "SELECT * FROM itineraries WHERE id = $1 AND user_id = $2",
+      [itineraryId, userId]
+    );
+
+    if (itineraryCheck.rows.length === 0) {
+      return res.status(404).json({ message: "Itinerary not found or not owned by user." });
+    }
+
+    // Check if the requested day is within the itinerary's range
+    const maxDays = itineraryCheck.rows[0].days_added;
+    if (parseInt(day) > maxDays) {
+      return res.status(400).json({ 
+        message: `Cannot move activity to day ${day}. Itinerary only has ${maxDays} days.` 
+      });
+    }
+
+    // Check if activity exists in the itinerary
+    const activityCheck = await db.query(
+      "SELECT * FROM itinerary_activities WHERE itinerary_id = $1 AND activity_id = $2 AND user_id = $3",
+      [itineraryId, activityId, userId]
+    );
+
+    if (activityCheck.rows.length === 0) {
+      return res.status(404).json({ 
+        message: "Activity not found in this itinerary or not owned by user." 
+      });
+    }
+
+    // Update the activity's day
+    const updateResult = await db.query(
+      "UPDATE itinerary_activities SET day = $1 WHERE itinerary_id = $2 AND activity_id = $3 AND user_id = $4 RETURNING *",
+      [day, itineraryId, activityId, userId]
+    );
+
+    if (updateResult.rows.length === 0) {
+      return res.status(500).json({ message: "Failed to update activity." });
+    }
+
+    res.status(200).json({ 
+      success: true, 
+      message: `Activity moved to day ${day}`,
+      activity: updateResult.rows[0]
+    });
+  } catch (error) {
+    console.error("Error moving activity:", error);
+    res.status(500).json({ 
+      message: "Error moving activity.", 
+      error: error.message 
+    });
+  }
+});
+
 
 app.listen(5000, () => console.log("Backend running on http://localhost:5000"));

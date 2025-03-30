@@ -413,11 +413,11 @@
         flex-shrink: 0;
         overflow: auto;
       }
-      .editTimeButton {
+      .moveActivityButton {
         color: white;
-        font-size: 1.2em;
+        font-size: 1.1em;
         background-color: #013d79;
-        padding: 16px 36px;
+        padding: 20px 32px;
         border: solid #013d79;
         border-radius: 8px;
         width: 200px;
@@ -425,8 +425,75 @@
         top: 4px;
         left: 16px; */
         cursor: pointer;
-        display: none;
       }
+      /* Move Activity Popup */
+      .move-activity-popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .popup-content {
+        background-color: white;
+        padding: 24px;
+        border-radius: 8px;
+        min-width: 300px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      #day-selector {
+        margin: 16px 0;
+        padding: 12px;
+        width: 100%;
+        font-size: 16px;
+        border: 1px solid #CCD8E4;
+        border-radius: 6px;
+        background-color: #f5f7fa;
+      }
+
+      .popup-buttons {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 24px;
+      }
+
+      .popup-confirm-button, .popup-cancel-button {
+        padding: 12px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+        transition: background-color 0.2s;
+      }
+
+      .popup-confirm-button {
+         background-color: #013d79;
+         color: white;
+      }
+
+      .popup-confirm-button:hover {
+        background-color: #012d59;
+      }
+
+      .popup-cancel-button {
+        background-color: #cdcdcd;
+        color: #333;
+      }
+
+      .popup-cancel-button:hover {
+        background-color: #bbbbbb;
+      }      
+
+
       .editTimePen {
         margin-right: 8px;
         font-size: 1.25em;

@@ -199,10 +199,10 @@ function displayActivities(activities, totalDays) {
                 const buttonSet = document.createElement("div");
                 buttonSet.classList.add("myItineraryButtonSet");
 
-                const editButton = document.createElement("button");
-                editButton.classList.add("editTimeButton");
-                editButton.innerHTML = `<i class="fa-solid fa-pen editTimePen"></i> Edit Time`;
-                editButton.onclick = () => editActivityTime(activity.activity_id);
+                const moveButton = document.createElement("button");
+                moveButton.classList.add("moveActivityButton");
+                moveButton.innerHTML = `<i class="fa-solid fa-up-down-left-right"></i> Move Activity`;
+                moveButton.onclick = () => showMoveActivityPopup(activity.activity_id, activity.day, totalDays);
 
                 const deleteButton = document.createElement("button");
                 deleteButton.classList.add("deleteButton");
@@ -214,7 +214,7 @@ function displayActivities(activities, totalDays) {
                 textContainer.appendChild(tag);
                 textContainer.appendChild(tagTwo);
 
-                buttonSet.appendChild(editButton);
+                buttonSet.appendChild(moveButton);
                 buttonSet.appendChild(deleteButton);
 
                 activityContainer.appendChild(img);
@@ -225,6 +225,117 @@ function displayActivities(activities, totalDays) {
                 container.appendChild(activityContainer);
             });
         }
+    }
+}
+
+// Function to show popup for moving activity to a different day
+function showMoveActivityPopup(activityId, currentDay, totalDays) {
+    // Remove any existing popups first
+    const existingPopup = document.getElementById('move-activity-popup');
+    if (existingPopup) {
+        existingPopup.remove();
+    }
+
+    // Create popup container
+    const popup = document.createElement('div');
+    popup.id = 'move-activity-popup';
+    popup.classList.add('move-activity-popup');
+
+    // Create popup content
+    const popupContent = document.createElement('div');
+    popupContent.classList.add('popup-content');
+
+    // Create title
+    const title = document.createElement('h3');
+    title.textContent = 'Select a Day:';
+    
+    // Create day selector dropdown
+    const daySelector = document.createElement('select');
+    daySelector.id = 'day-selector';
+    
+    // Add options for each day
+    for (let i = 1; i <= totalDays; i++) {
+        const option = document.createElement('option');
+        option.value = i;
+        option.textContent = `Day ${i}`;
+        // Set current day as selected
+        if (i === currentDay) {
+            option.selected = true;
+        }
+        daySelector.appendChild(option);
+    }
+    
+    // Create buttons container
+    const buttonsContainer = document.createElement('div');
+    buttonsContainer.classList.add('popup-buttons');
+
+    // Create confirm button
+    const confirmButton = document.createElement('button');
+    confirmButton.classList.add('popup-confirm-button');
+    confirmButton.textContent = 'Confirm';
+    confirmButton.onclick = () => {
+        const selectedDay = parseInt(document.getElementById('day-selector').value);
+        moveActivity(activityId, selectedDay);
+        popup.remove();
+    };
+    
+    // Create cancel button
+    const cancelButton = document.createElement('button');
+    cancelButton.classList.add('popup-cancel-button');
+    cancelButton.textContent = 'Cancel';
+    cancelButton.onclick = () => {
+        popup.remove();
+    };
+    
+    // Assemble the popup
+    popupContent.appendChild(title);
+    popupContent.appendChild(daySelector);
+    
+    buttonsContainer.appendChild(confirmButton);
+    buttonsContainer.appendChild(cancelButton);
+    
+    popupContent.appendChild(buttonsContainer);
+    popup.appendChild(popupContent);
+    
+    // Add the popup to the document body
+    document.body.appendChild(popup);
+}
+
+// Function to update activity day in the database and refresh the display
+async function moveActivity(activityId, newDay) {
+    try {
+        const itineraryId = localStorage.getItem("selectedItineraryId");
+        if (!itineraryId) {
+            console.error("No itinerary ID found in localStorage");
+            return;
+        }
+
+        const token = localStorage.getItem("token");
+        if (!token) {
+            console.error("No authentication token found.");
+            return;
+        }
+
+        const response = await fetch(`http://localhost:5000/api/itinerary/${itineraryId}/activities/${activityId}/move`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            },
+            body: JSON.stringify({ day: newDay }),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || "Failed to move activity");
+        }
+
+        // Success - refresh the itinerary details to show the updated day
+        console.log(`Activity ${activityId} moved to day ${newDay}`);
+        fetchItineraryDetails();
+    } catch (error) {
+        console.error("Error moving activity:", error);
+        alert("Failed to move activity. Please try again.");
     }
 }
 
@@ -243,8 +354,47 @@ async function deleteActivity(activityId) {
             return;
         }
 
-        // Confirm deletion before deleting an activity
-        if (confirm("Are you sure you want to delete this activity?")) {
+        // Confirmation popup before deleting an activity
+        const popup = document.createElement('div');
+        popup.classList.add('move-activity-popup');
+        
+        const popupContent = document.createElement('div');
+        popupContent.classList.add('popup-content');
+        
+        const title = document.createElement('h3');
+        title.textContent = 'Delete Activity';
+        
+        const message = document.createElement('p');
+        message.textContent = 'Are you sure you want to delete this activity?';
+        message.classList.add('delete-confirmation-message');
+        
+        const buttonsContainer = document.createElement('div');
+        buttonsContainer.classList.add('popup-buttons');
+        
+        const confirmButton = document.createElement('button');
+        confirmButton.classList.add('popup-confirm-button');
+        confirmButton.textContent = 'OK';
+        
+        const cancelButton = document.createElement('button');
+        cancelButton.classList.add('popup-cancel-button');
+        cancelButton.textContent = 'Cancel';
+        
+        // Combine popup
+        buttonsContainer.appendChild(confirmButton);
+        buttonsContainer.appendChild(cancelButton);
+        
+        popupContent.appendChild(title);
+        popupContent.appendChild(message);
+        popupContent.appendChild(buttonsContainer);
+        
+        popup.appendChild(popupContent);
+        document.body.appendChild(popup);
+        
+        // Event listeners for buttons
+        confirmButton.addEventListener('click', async () => {
+            popup.remove();
+            
+            // Deletion
             const response = await fetch(`http://localhost:5000/api/itinerary/${itineraryId}/activities/${activityId}`, {
                 method: "DELETE",
                 headers: {
@@ -265,15 +415,18 @@ async function deleteActivity(activityId) {
             }
 
             console.log("Activity deleted successfully");
-        } else {
+            fetchItineraryDetails();
+        });
+        
+        cancelButton.addEventListener('click', () => {
+            popup.remove();
             console.log("Activity deletion cancelled.");
-        }
-        fetchItineraryDetails();
+        });
+        
     } catch (error) {
         console.error("Error deleting activity:", error);
     }
 }
-
 
 // loads itinerary details when page loads
 window.onload = () => {
