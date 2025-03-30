@@ -203,6 +203,7 @@
       display: grid;
       grid-template-columns: 2;
       grid-template-rows: 5;
+      margin-bottom: 20px;
     }
     .nameInput {
       margin-left: 15px;
@@ -270,10 +271,10 @@
   display: flex;
   align-items: center;
   justify-content: center; 
-  width: 50%;
+  width: 100%;
   background-color: #cdbade;
   height: 48px;
-  margin-bottom: 8px; 
+  margin-bottom: 32px; 
 }
 
 /* day text */
@@ -295,9 +296,26 @@
 /* Additional styling for the "No activities scheduled" message */
 .no-activities-message {
   font-size: 1em;
-  color: #888;
+  color: black;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 32px;
+}
+
+/* Browse button thats underneath the no activities message so users can go to activities page to browse activities */
+.browseButton {
+  color: white;
+  font-size: 1.2em;
+  background-color: #013d79;
+  padding: 12px 24px;
+  border: solid #013d79;
+  border-radius: 8px;
+  width: 200px;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 24px;
+  margin: 0 auto 24px auto;
+  /* margin-top: 24px; */
+  text-align: center;
 }
 
 
@@ -324,6 +342,7 @@
         margin-left: 80px;
         margin-right: 80px;
       }
+      /* 2nd itinerary container for activities shown in the itinerary collections theres one above not to get confused with */
       .itinerary-container {
         display: flex;
         flex-direction: row;
@@ -335,6 +354,7 @@
         border-radius: 8px;
         background-color: #f5f7fa;
         gap: 24px;
+        margin-bottom: 24px;
         /* overflow: auto; */
         /* overflow: hidden; */
       }
