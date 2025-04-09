@@ -373,7 +373,7 @@ async function deleteActivity(activityId) {
         
         const confirmButton = document.createElement('button');
         confirmButton.classList.add('popup-confirm-button');
-        confirmButton.textContent = 'OK';
+        confirmButton.textContent = 'Confirm';
         
         const cancelButton = document.createElement('button');
         cancelButton.classList.add('popup-cancel-button');
