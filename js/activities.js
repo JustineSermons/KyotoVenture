@@ -135,6 +135,226 @@ document.addEventListener("DOMContentLoaded", function () {
       checkbox.addEventListener("change", filterCards);
     });
 
+   // Function to show a popup notification when an activity is added to the itinerary
+   function showActivityAddedPopup() {
+    // Remove any existing popups first
+    const existingPopup = document.getElementById('activity-added-popup');
+    if (existingPopup) {
+      existingPopup.remove();
+    }
+
+    // Create popup container
+    const popup = document.createElement('div');
+    popup.id = 'activity-added-popup';
+    popup.classList.add('move-activity-popup');
+    
+    // Create popup content
+    const popupContent = document.createElement('div');
+    popupContent.classList.add('popup-content');
+    
+    // Create title
+    const title = document.createElement('h3');
+    title.textContent = 'Success';
+    
+    // Create message
+    const message = document.createElement('p');
+    message.textContent = 'Activity added to your default itinerary!';
+    message.classList.add('delete-confirmation-message');
+    
+    // Create buttons container
+    const buttonsContainer = document.createElement('div');
+    buttonsContainer.classList.add('popup-buttons');
+    
+    // Create OK button
+    const okButton = document.createElement('button');
+    okButton.classList.add('popup-confirm-button');
+    okButton.textContent = 'OK';
+    okButton.onclick = () => {
+      popup.remove();
+    };
+    
+    // Assemble the popup
+    buttonsContainer.appendChild(okButton);
+    
+    popupContent.appendChild(title);
+    popupContent.appendChild(message);
+    popupContent.appendChild(buttonsContainer);
+    
+    popup.appendChild(popupContent);
+    
+    // Add the popup to the document body
+    document.body.appendChild(popup);
+
+    // Automatically close popup after 3 seconds
+    setTimeout(() => {
+      if (document.body.contains(popup)) {
+        popup.remove();
+      }
+    }, 3000);
+  }
+
+  // Function to show an error popup
+  function showErrorPopup(errorMessage) {
+    // Remove any existing popups first
+    const existingPopup = document.getElementById('activity-error-popup');
+    if (existingPopup) {
+      existingPopup.remove();
+    }
+
+    // Create popup container
+    const popup = document.createElement('div');
+    popup.id = 'activity-error-popup';
+    popup.classList.add('move-activity-popup');
+    
+    // Create popup content
+    const popupContent = document.createElement('div');
+    popupContent.classList.add('popup-content');
+    
+    // Create title
+    const title = document.createElement('h3');
+    title.textContent = 'Error';
+    
+    // Create message
+    const message = document.createElement('p');
+    message.textContent = errorMessage || 'Something went wrong. Please try again.';
+    message.classList.add('delete-confirmation-message');
+    
+    // Create buttons container
+    const buttonsContainer = document.createElement('div');
+    buttonsContainer.classList.add('popup-buttons');
+    
+    // Create OK button
+    const okButton = document.createElement('button');
+    okButton.classList.add('popup-confirm-button');
+    okButton.textContent = 'OK';
+    okButton.onclick = () => {
+      popup.remove();
+    };
+    
+    // Assemble the popup
+    buttonsContainer.appendChild(okButton);
+    
+    popupContent.appendChild(title);
+    popupContent.appendChild(message);
+    popupContent.appendChild(buttonsContainer);
+    
+    popup.appendChild(popupContent);
+    
+    // Add the popup to the document body
+    document.body.appendChild(popup);
+  }
+
+  // Function to remove any existing popups (for better user experience and to not have multiple popups on screen for any reason)
+  function removeExistingPopups() {
+    const existingPopups = document.querySelectorAll('.move-activity-popup');
+    existingPopups.forEach(popup => {
+      popup.remove();
+    });
+  }
+
+  // Function to show a popup notification when an activity is added to the itinerary
+  function showActivityAddedPopup() {
+    // Remove any existing popups first
+    removeExistingPopups();
+
+    // popup container
+    const popup = document.createElement('div');
+    popup.id = 'activity-added-popup';
+    popup.classList.add('move-activity-popup');
+    
+    // popup content
+    const popupContent = document.createElement('div');
+    popupContent.classList.add('popup-content');
+    
+    // popup title
+    const title = document.createElement('h3');
+    title.textContent = 'Success';
+    
+    // message for adding an activity to the default itinerary
+    const message = document.createElement('p');
+    message.textContent = 'Activity added to your default itinerary!';
+    message.classList.add('delete-confirmation-message');
+    
+    // buttons container
+    const buttonsContainer = document.createElement('div');
+    buttonsContainer.classList.add('popup-buttons');
+    
+    // confirmation button
+    const okButton = document.createElement('button');
+    okButton.classList.add('popup-confirm-button');
+    okButton.textContent = 'OK';
+    okButton.onclick = () => {
+      popup.remove();
+    };
+    
+    // combine popup
+    buttonsContainer.appendChild(okButton);
+    
+    popupContent.appendChild(title);
+    popupContent.appendChild(message);
+    popupContent.appendChild(buttonsContainer);
+    
+    popup.appendChild(popupContent);
+    
+    // add popup to the document body
+    document.body.appendChild(popup);
+
+    // Automatically close popup after 3 seconds or the user can click the ok button
+    setTimeout(() => {
+      if (document.body.contains(popup)) {
+        popup.remove();
+      }
+    }, 3000);
+  }
+
+  // Function to show an error popup
+  function showErrorPopup(errorMessage) {
+    // Remove any existing popups first
+    removeExistingPopups();
+
+    // popup container
+    const popup = document.createElement('div');
+    popup.id = 'activity-error-popup';
+    popup.classList.add('move-activity-popup');
+    
+    // popup content
+    const popupContent = document.createElement('div');
+    popupContent.classList.add('popup-content');
+    
+    // title
+    const title = document.createElement('h3');
+    title.textContent = 'Error';
+    
+    // error message
+    const message = document.createElement('p');
+    message.textContent = errorMessage || 'Something went wrong. Please try again.';
+    message.classList.add('delete-confirmation-message');
+    
+    // buttons container
+    const buttonsContainer = document.createElement('div');
+    buttonsContainer.classList.add('popup-buttons');
+    
+    // OK button to exit popup
+    const okButton = document.createElement('button');
+    okButton.classList.add('popup-confirm-button');
+    okButton.textContent = 'OK';
+    okButton.onclick = () => {
+      popup.remove();
+    };
+    
+    // combine popup
+    buttonsContainer.appendChild(okButton);
+    
+    popupContent.appendChild(title);
+    popupContent.appendChild(message);
+    popupContent.appendChild(buttonsContainer);
+    
+    popup.appendChild(popupContent);
+    
+    // add popup to the document body
+    document.body.appendChild(popup);
+  }
+
   // Function to add an activity to the default itinerary
   async function addActivityToDefaultItinerary(activityId) {
     try {
@@ -142,7 +362,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const defaultItineraryId = localStorage.getItem("defaultItineraryId");
 
       if (!defaultItineraryId) {
-        alert("You need to set a default itinerary first.");
+        showErrorPopup("You need to set a default itinerary first.");
         return;
       }
 
@@ -157,13 +377,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const result = await response.json();
 
-      if (!response.ok)
+      if (!response.ok) {
         throw new Error(result.error || "Failed to add activity.");
+      }
 
-      alert("Activity added to your default itinerary!");
-      fetchActivitiesForItinerary(defaultItineraryId);
+      showActivityAddedPopup();
+
     } catch (error) {
       console.error("Error adding activity to itinerary:", error);
+      showErrorPopup(error.message || "Failed to add activity to itinerary.");
     }
   }
 
