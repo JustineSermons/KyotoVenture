@@ -54,7 +54,12 @@
         margin-top: 24px;
         cursor: pointer;
       }
-
+      .itinerary:hover {
+        background: #cdbade;
+        font-weight: 600;
+        color: #013d79;
+        cursor: pointer;
+      }
       .info {
         display: grid;
         grid-template-rows: repeat(3, auto);
@@ -288,64 +293,134 @@
       .removeColor {
         color: initial;
       }
+
+      /* Popup styles for adding an activity to a default itinerary collection */
+      .move-activity-popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .popup-content {
+        background-color: white;
+        padding: 24px;
+        border-radius: 8px;
+        min-width: 300px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .popup-buttons {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 24px;
+      }
+
+      .popup-confirm-button,
+      .popup-cancel-button {
+        padding: 12px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+        transition: background-color 0.2s;
+      }
+
+      .popup-confirm-button {
+        background-color: #013d79;
+        color: white;
+      }
+
+      .popup-confirm-button:hover {
+        background-color: #012d59;
+      }
+
+      .popup-cancel-button {
+        background-color: #cdcdcd;
+        color: #333;
+      }
+
+      .popup-cancel-button:hover {
+        background-color: #bbbbbb;
+      }
+
+      .delete-confirmation-message {
+        margin: 16px 0;
+        font-size: 16px;
+      }
     </style>
   </head>
   <body>
-   <!-- Navigation -->
-<nav class="kyotoVentureNavBar">
-  <div class="kyotoVentureLogo">
-    <div class="logoImage"><img src="assets/icons/logo.svg"></div>
-    <div class="title">KyotoVenture</div>
-  </div>
-  <ul class="navbar-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="destinations.html">Destinations</a>
-      <ul class="dropdown">
-        <li><a href="kyoto.html">Kyoto City</a></li>
-        <li><a href="arashiyama.html">Arashiyama</a></li>
-        <li><a href="nara.html">Nara</a></li>
-        <li><a href="uji.html">Uji</a></li>
-        <li><a href="kameoka.html">Kameoka</a></li>
-      </ul>
-    </li>
+    <!-- Navigation -->
+    <nav class="kyotoVentureNavBar">
+      <div class="kyotoVentureLogo">
+        <div class="logoImage"><img src="assets/icons/logo.svg" /></div>
+        <div class="title">KyotoVenture</div>
+      </div>
+      <ul class="navbar-links">
+        <li><a href="index.html">Home</a></li>
+        <li>
+          <a href="destinations.html">Destinations</a>
+          <ul class="dropdown">
+            <li><a href="kyoto.html">Kyoto City</a></li>
+            <li><a href="arashiyama.html">Arashiyama</a></li>
+            <li><a href="nara.html">Nara</a></li>
+            <li><a href="uji.html">Uji</a></li>
+            <li><a href="kameoka.html">Kameoka</a></li>
+          </ul>
+        </li>
 
-    <li><a href="activities.html">Activities</a></li>
-    <li><a href="itineraries.html">Itineraries</a>
-      <ul class="dropdown">
-        <li><a href="create-itinerary.html">Create Itinerary</a></li>
-        <!-- <li><a href="wishlist.html">Wishlist</a></li> -->
-      </ul>
-    </li>
-    <li><a href="about-us.html">About</a>
-      <ul class="dropdown">
-        <!-- <li><a href="about-us.html">About</a></li> -->
-        <li><a href="contact-us.html">Contact Us</a></li>
-        <li><a href="faqs.html">FAQs</a></li>
-      </ul>
-    </li>
+        <li><a href="activities.html">Activities</a></li>
+        <li>
+          <a href="itineraries.html">Itineraries</a>
+          <ul class="dropdown">
+            <li><a href="create-itinerary.html">Create Itinerary</a></li>
+            <!-- <li><a href="wishlist.html">Wishlist</a></li> -->
+          </ul>
+        </li>
+        <li>
+          <a href="about-us.html">About</a>
+          <ul class="dropdown">
+            <!-- <li><a href="about-us.html">About</a></li> -->
+            <li><a href="contact-us.html">Contact Us</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+          </ul>
+        </li>
 
-    <!-- Logged Out Users -->
-    <li id="logged-out" class="profile-menu">
-      <a href="#">
-        <div class="profile-icon"><i class="fa-regular fa-user navProfileIcon"></i></div>
-      </a>
-      <ul class="dropdown">
-        <li><a href="login.html">Login</a></li>
-        <li><a href="signup.html">Sign Up</a></li>
-      </ul>
-    </li>
+        <!-- Logged Out Users -->
+        <li id="logged-out" class="profile-menu">
+          <a href="#">
+            <div class="profile-icon">
+              <i class="fa-regular fa-user navProfileIcon"></i>
+            </div>
+          </a>
+          <ul class="dropdown">
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+          </ul>
+        </li>
 
-    <!-- Logged In Users -->
-    <li id="logged-in" class="profile-menu">
-      <a href="#">
-        <div class="profile-icon"><i class="fa-regular fa-user navProfileIcon"></i></div>
-      </a>
-      <ul class="dropdown">
-        <li><a href="#" onclick="logout()">Logout</a></li>
+        <!-- Logged In Users -->
+        <li id="logged-in" class="profile-menu">
+          <a href="#">
+            <div class="profile-icon">
+              <i class="fa-regular fa-user navProfileIcon"></i>
+            </div>
+          </a>
+          <ul class="dropdown">
+            <li><a href="#" onclick="logout()">Logout</a></li>
+          </ul>
+        </li>
       </ul>
-    </li>
-  </ul>
-</nav>
+    </nav>
     <!-- End of Nav -->
     <div class="page-container">
       <div class="back-arrow">
@@ -368,7 +443,7 @@
         <div class="location">
           <p class="activityDetailsExtra">
             <span class="location"
-              ><strong class="boldLocation">Location:</strong>  Fushimi Ward, 
+              ><strong class="boldLocation">Location:</strong> Fushimi Ward,
               Kyoto City</span
             >
           </p>
@@ -381,22 +456,21 @@
             (700)</span
           >
           <p class="activityDetailsText">
-            Fushimi Inari Shrine is a famous Shinto shrine located 
-            in Fushimi-ku, Kyoto, Japan, dedicated to Inari, the 
-            deity of rice and agriculture. ​Established in the 8th century, 
-            the shrine is renowned for its thousands of vibrant vermilion 
-            torii gates, which form an impressive path leading up to the sacred
-             Mount Inari.​ The trails, which stretch for several kilometers, 
-             offer visitors the opportunity to explore various smaller shrines 
-             and enjoy scenic views of Kyoto. Foxes, considered to be 
-             the messengers of Inari, are often depicted in the shrine’s 
-             statues. Fushimi Inari Shrine is unique not only for its stunning 
-             architectural beauty and picturesque setting but also for its 
-             cultural significance, drawing millions of visitors each year 
-             for worship, hiking, and photography, 
-            making it one of Japan's most iconic landmarks.
+            Fushimi Inari Shrine is a famous Shinto shrine located in
+            Fushimi-ku, Kyoto, Japan, dedicated to Inari, the deity of rice and
+            agriculture. ​Established in the 8th century, the shrine is renowned
+            for its thousands of vibrant vermilion torii gates, which form an
+            impressive path leading up to the sacred Mount Inari.​ The trails,
+            which stretch for several kilometers, offer visitors the opportunity
+            to explore various smaller shrines and enjoy scenic views of Kyoto.
+            Foxes, considered to be the messengers of Inari, are often depicted
+            in the shrine’s statues. Fushimi Inari Shrine is unique not only for
+            its stunning architectural beauty and picturesque setting but also
+            for its cultural significance, drawing millions of visitors each
+            year for worship, hiking, and photography, making it one of Japan's
+            most iconic landmarks.
           </p>
-          <button class="itinerary">
+          <button class="itinerary" data-activity-id="1">
             <span
               ><i class="fa-solid fa-plus activityDetailsPlus"></i> Add to
               Itinerary</span
@@ -408,7 +482,7 @@
       <div class="info">
         <div class="details"><h4>Details</h4></div>
         <div class="interests">
-          <p><strong>Interest/Topic:</strong>  Landmarks</p>
+          <p><strong>Interest/Topic:</strong> Landmarks</p>
         </div>
         <div class="popularity">
           <p><strong>Popularity:</strong> Very High</p>
@@ -417,7 +491,10 @@
           <p><strong>Reservation:</strong> Not Required</p>
         </div>
         <div class="price">
-          <p><strong>Estimated Price Range:</strong> Free-$1,000 USD (¥0-¥150,000) for donations</p>
+          <p>
+            <strong>Estimated Price Range:</strong> Free-$1,000 USD
+            (¥0-¥150,000) for donations
+          </p>
         </div>
       </div>
 
@@ -429,13 +506,15 @@
         <div class="highlights">
           <ol>
             <li>
-              <strong>Highlights:</strong> Thousands of vermilion torii gates, scenic trails, stunning views of Kyoto.
+              <strong>Highlights:</strong> Thousands of vermilion torii gates,
+              scenic trails, stunning views of Kyoto.
             </li>
             <li>
-              <strong>Duration:</strong> Year-round, particularly busy during festivals and autumn.
+              <strong>Duration:</strong> Year-round, particularly busy during
+              festivals and autumn.
             </li>
             <li>
-                Celebrations during New Year and community events year-round.
+              Celebrations during New Year and community events year-round.
             </li>
           </ol>
         </div>
@@ -443,23 +522,53 @@
         <div class="explore">
           <ul>
             <li>
-                Walk Through Senbon Torii: Experience the iconic path of thousands of gates up Mt.​ Inari.
+              Walk Through Senbon Torii: Experience the iconic path of thousands
+              of gates up Mt.​ Inari.
             </li>
-            <li>Hike to Mt. Inari Summit: Enjoy panoramic views of Kyoto from the top.</li>
-            <li>Visit Inari Shrine: Explore the main shrine and its spiritual importance.</li>
-            <li>Sample Local Food: Try delicious snacks from vendors at the shrine’s base.</li>
-            <li>Participate in Rituals: Engage in practices like omikuji (fortune telling) and offering prayers.</li>
+            <li>
+              Hike to Mt. Inari Summit: Enjoy panoramic views of Kyoto from the
+              top.
+            </li>
+            <li>
+              Visit Inari Shrine: Explore the main shrine and its spiritual
+              importance.
+            </li>
+            <li>
+              Sample Local Food: Try delicious snacks from vendors at the
+              shrine’s base.
+            </li>
+            <li>
+              Participate in Rituals: Engage in practices like omikuji (fortune
+              telling) and offering prayers.
+            </li>
           </ul>
         </div>
 
         <div class="book">
           <ul>
-            <li>Arrive Early: Avoid crowds, especially on weekends and holidays.</li>
-            <li>Wear Comfortable Footwear: Prepare for a moderate hike on uneven paths.</li>
-            <li>Bring Water and Snacks: Stay hydrated and energized during your visit.</li>
-            <li>Use Public Transport: Take the train to Inari Station for easy access.</li>
-            <li>Check Weather: Dress for the season and bring an umbrella if it looks like rain.</li>
-            <li>Respect Customs: Be courteous around worshippers and during rituals.</li>
+            <li>
+              Arrive Early: Avoid crowds, especially on weekends and holidays.
+            </li>
+            <li>
+              Wear Comfortable Footwear: Prepare for a moderate hike on uneven
+              paths.
+            </li>
+            <li>
+              Bring Water and Snacks: Stay hydrated and energized during your
+              visit.
+            </li>
+            <li>
+              Use Public Transport: Take the train to Inari Station for easy
+              access.
+            </li>
+            <li>
+              Check Weather: Dress for the season and bring an umbrella if it
+              looks like rain.
+            </li>
+            <li>
+              Respect Customs: Be courteous around worshippers and during
+              rituals.
+            </li>
           </ul>
         </div>
       </div>
@@ -494,11 +603,9 @@
           </div>
           <div class="firstcomment">
             <p class="reviewComment">
-                Fushimi Inari Shrine is truly a magical place! 
-                Walking through the thousands of vibrant torii 
-                gates was an unforgettable experience. I enjoyed 
-                hiking up to the top for 
-                breathtaking views of Kyoto.
+              Fushimi Inari Shrine is truly a magical place! Walking through the
+              thousands of vibrant torii gates was an unforgettable experience.
+              I enjoyed hiking up to the top for breathtaking views of Kyoto.
             </p>
           </div>
         </div>
@@ -513,10 +620,10 @@
           </div>
           <div class="secondcomment">
             <p>
-                The atmosphere among the towering red gates is 
-                something I’ve never experienced before. 
-                I loved that I could explore the trails at my own pace, 
-                and the serene surroundings made it even more special.
+              The atmosphere among the towering red gates is something I’ve
+              never experienced before. I loved that I could explore the trails
+              at my own pace, and the serene surroundings made it even more
+              special.
             </p>
           </div>
         </div>
@@ -531,11 +638,10 @@
           </div>
           <div class="thirdcomment">
             <p>
-                Fushimi Inari Shrine is a must-see in Kyoto! 
-                The intricate pathways and beautiful 
-                scenery all around made for a perfect day of
-                 exploration.​ I particularly appreciated how each 
-                gate tells its own story—so much history in one place!
+              Fushimi Inari Shrine is a must-see in Kyoto! The intricate
+              pathways and beautiful scenery all around made for a perfect day
+              of exploration.​ I particularly appreciated how each gate tells
+              its own story—so much history in one place!
             </p>
           </div>
         </div>
@@ -544,56 +650,56 @@
       <h1></h1>
     </div>
     <!-- Footer -->
-<div class="logo-grid">
-  <div class="logo">
-    <img src="assets/icons/logo.svg" alt="Logo" />
-  </div>
-<div class="destination">
-  <p><strong>Destinations</strong></p>
-<p>Kyoto City</p>
-<p>Arashiyama</p>
-<p>Nara</p>
-<p>Uji</p>
-<p>Kameoka</p>
-</div>
+    <div class="logo-grid">
+      <div class="logo">
+        <img src="assets/icons/logo.svg" alt="Logo" />
+      </div>
+      <div class="destination">
+        <p><strong>Destinations</strong></p>
+        <p>Kyoto City</p>
+        <p>Arashiyama</p>
+        <p>Nara</p>
+        <p>Uji</p>
+        <p>Kameoka</p>
+      </div>
 
-<div class="guide">
-  <strong><p>Guides</p></strong>
-  <p>Guides</p>
-  <p>Community Guides</p>
-</div>
+      <div class="guide">
+        <strong><p>Guides</p></strong>
+        <p>Guides</p>
+        <p>Community Guides</p>
+      </div>
 
-<div class="support">
-  <strong><p>Support</p></strong>
-  <p>FAQs</p>
-  <p>Contact Us</p>
-  <p>About Us</p>
-</div>
+      <div class="support">
+        <strong><p>Support</p></strong>
+        <p>FAQs</p>
+        <p>Contact Us</p>
+        <p>About Us</p>
+      </div>
 
-<div class="news">
-<strong><p>Join Our Newsletter </p></strong>
-<p class="receive">
-  Receive news about the latest and most 
-  popular activities and events in Kyoto!   
-</p>
+      <div class="news">
+        <strong><p>Join Our Newsletter</p></strong>
+        <p class="receive">
+          Receive news about the latest and most popular activities and events
+          in Kyoto!
+        </p>
 
-<div class="email-bar">
-  <form action="/email" method="get">
-    <input
-      type="text"
-      name="q"
-      placeholder="Your Email"
-      class="email-input"
-    />
-  </form>
+        <div class="email-bar">
+          <form action="/email" method="get">
+            <input
+              type="text"
+              name="q"
+              placeholder="Your Email"
+              class="email-input"
+            />
+          </form>
 
-  <button class="subscribe">Subscribe</button>
-</div>
-
-</div>
-</div>
-<!-- End of Footer -->
+          <button class="subscribe">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <!-- End of Footer -->
     <script src="js/script.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/activity-details.js"></script>
   </body>
 </html>
