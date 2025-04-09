@@ -288,6 +288,75 @@
       .removeColor {
         color: initial;
       }
+       /* Popup styles for adding an activity to a default itinerary collection */
+       .move-activity-popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .popup-content {
+        background-color: white;
+        padding: 24px;
+        border-radius: 8px;
+        min-width: 300px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .popup-buttons {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 24px;
+      }
+
+      .popup-confirm-button,
+      .popup-cancel-button {
+        padding: 12px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+        transition: background-color 0.2s;
+      }
+
+      .popup-confirm-button {
+        background-color: #013d79;
+        color: white;
+      }
+
+      .popup-confirm-button:hover {
+        background-color: #012d59;
+      }
+
+      .popup-cancel-button {
+        background-color: #cdcdcd;
+        color: #333;
+      }
+
+      .popup-cancel-button:hover {
+        background-color: #bbbbbb;
+      }
+
+      .delete-confirmation-message {
+        margin: 16px 0;
+        font-size: 16px;
+      }
+      /* add to itinerary button hover style */
+      .itinerary:hover {
+        background: #cdbade;
+        font-weight: 600;
+        color: #013d79;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
@@ -382,7 +451,7 @@
           <p class="activityDetailsText">
             The Kyoto International Manga Museum is a dedicated space celebrating the art and culture of manga, located in the Nakagyō-ku district of Kyoto, Japan. ​Opened in 2006, the museum houses a vast collection of approximately 300,000 manga volumes, making it one of the largest manga museums in the world.​ Visitors can freely browse and read from a selection of over 50,000 manga titles displayed on shelves, providing an immersive experience into the diverse world of Japanese comic art. The museum also features exhibitions, workshops, and events related to manga and its history, appealing to both avid fans and newcomers alike.
           </p>
-          <button class="itinerary">
+          <button class="itinerary" data-activity-id="5">
             <span
               ><i class="fa-solid fa-plus activityDetailsPlus"></i> Add to
               Itinerary</span
@@ -569,5 +638,6 @@
 <!-- End of Footer -->
     <script src="js/script.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/activity-details.js"></script>
   </body>
 </html>

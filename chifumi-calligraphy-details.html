@@ -288,6 +288,75 @@
       .removeColor {
         color: initial;
       }
+      /* Popup styles for adding an activity to a default itinerary collection */
+      .move-activity-popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .popup-content {
+        background-color: white;
+        padding: 24px;
+        border-radius: 8px;
+        min-width: 300px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .popup-buttons {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 24px;
+      }
+
+      .popup-confirm-button,
+      .popup-cancel-button {
+        padding: 12px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+        transition: background-color 0.2s;
+      }
+
+      .popup-confirm-button {
+        background-color: #013d79;
+        color: white;
+      }
+
+      .popup-confirm-button:hover {
+        background-color: #012d59;
+      }
+
+      .popup-cancel-button {
+        background-color: #cdcdcd;
+        color: #333;
+      }
+
+      .popup-cancel-button:hover {
+        background-color: #bbbbbb;
+      }
+
+      .delete-confirmation-message {
+        margin: 16px 0;
+        font-size: 16px;
+      }
+      /* add to itinerary button hover style */
+      .itinerary:hover {
+        background: #cdbade;
+        font-weight: 600;
+        color: #013d79;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
@@ -383,7 +452,7 @@
           <p class="activityDetailsText">
             Chifumi Calligraphy Kyoto offers an authentic and enriching calligraphy experience in the heart of Kyoto. With expert instructors, guests can dive deep into the traditional art of Japanese calligraphy (shodō), learning how to write kanji, hiragana, or even their own names with graceful brushstrokes. The studio blends modern teaching methods with historical techniques for a memorable cultural experience.
           </p>
-          <button class="itinerary">
+          <button class="itinerary" data-activity-id="23">
             <span
               ><i class="fa-solid fa-plus activityDetailsPlus"></i> Add to
               Itinerary</span
@@ -573,5 +642,6 @@
 <!-- End of Footer -->
     <script src="js/script.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/activity-details.js"></script>
   </body>
 </html>
