@@ -1,13 +1,13 @@
-// Gets the "Add Day" option/button (not actually a button but a span), the container for days, and the Save Itinerary button
+// Gets the "Add Day" option/button, the container for days, and the Save Itinerary button
 const addDayText = document.getElementById('add-day');
 const daysContainer = document.getElementById('days-container');
 const saveItineraryButton = document.getElementById('save-itinerary-btn');
 
 // Function to create a new day section
 function addNewDay() {
-  const dayCount = daysContainer.querySelectorAll('.day').length; // Count only elements with the "day" class
+  const dayCount = daysContainer.querySelectorAll('.day').length;
 
-  if (dayCount < 7) { // Set max day limit to 7 (switched from 14 to simplify)
+  if (dayCount < 7) {
     // Create a new container div for the day
     const dayContainer = document.createElement('div');
     dayContainer.classList.add('day');
@@ -15,16 +15,76 @@ function addNewDay() {
     // Create the text for the new day
     const dayText = document.createElement('span');
     dayText.classList.add('dayText');
-    dayText.textContent = `Day ${dayCount + 1}`; // Label the day
+    dayText.textContent = `Day ${dayCount + 1}`;
 
     // Append the day text to the day container
     dayContainer.appendChild(dayText);
-
-    // Append the new day container to the days container
     daysContainer.appendChild(dayContainer);
   } else {
-    alert("You can't add more than 7 days!");
+    // Show error popup for day limit
+    showPopup("Day Limit Reached", "You can't add more than 7 days!", "OK", "error");
   }
+}
+
+// Popup function with button-type support
+function showPopup(title, message, buttonText, type, callback) {
+  // Remove any existing popup first
+  const existingPopup = document.getElementById('custom-popup');
+  if (existingPopup) {
+    existingPopup.remove();
+  }
+
+  // popup container
+  const popup = document.createElement('div');
+  popup.id = 'custom-popup';
+  popup.classList.add('move-activity-popup');
+
+  // popup content with appropriate class based on type
+  const popupContent = document.createElement('div');
+  popupContent.classList.add('popup-content');
+  
+  // add type-specific class
+  if (type) {
+    popupContent.classList.add(`popup-${type}`);
+  }
+
+  // title
+  const popupTitle = document.createElement('h3');
+  popupTitle.textContent = title;
+  popupTitle.classList.add('popup-title');
+
+  // message
+  const popupMessage = document.createElement('p');
+  popupMessage.textContent = message;
+  popupMessage.classList.add('popup-message');
+
+  // buttons container
+  const buttonsContainer = document.createElement('div');
+  buttonsContainer.classList.add('popup-buttons');
+
+  // button with type-specific class
+  const confirmButton = document.createElement('button');
+  confirmButton.classList.add('popup-button');
+  
+  if (type) {
+    confirmButton.classList.add(`popup-button-${type}`);
+  }
+  
+  confirmButton.textContent = buttonText;
+  confirmButton.onclick = () => {
+    popup.remove();
+    if (callback) callback();
+  };
+
+  // combine popup
+  buttonsContainer.appendChild(confirmButton);
+  popupContent.appendChild(popupTitle);
+  popupContent.appendChild(popupMessage);
+  popupContent.appendChild(buttonsContainer);
+  popup.appendChild(popupContent);
+
+  // add popup to document body
+  document.body.appendChild(popup);
 }
 
 // Event listener for the "Add Day" option
@@ -44,6 +104,12 @@ function saveItinerary() {
   const startDate = document.getElementById('startDate').value;
   const endDate = document.getElementById('endDate').value;
 
+  // form validation
+  if (!itineraryName || !destinations || !budget || !startDate || !endDate || daysAdded === 0) {
+    showPopup("Missing Information", "Please fill in all fields and add at least one day.", "OK", "error");
+    return;
+  }
+
   // Log both the form data and the number of days in console
   console.log("Itinerary Name:", itineraryName);
   console.log("Destinations:", destinations);
@@ -52,7 +118,7 @@ function saveItinerary() {
   console.log("End Date:", endDate);
   console.log("Number of Days Added:", daysAdded);
 
-  //  request body to send to the backend (information/data that gets passed into the backend)
+  // Request body to send to the backend
   const itineraryData = {
     itinerary_name: itineraryName,
     destinations: destinations.split(',').map(destination => destination.trim()), 
@@ -62,12 +128,15 @@ function saveItinerary() {
     days_added: daysAdded 
   };
 
+  // Show loading popup
+  showPopup("Processing", "Saving your itinerary...", "Please wait", "info");
+
   // Send data to the backend
   fetch('http://localhost:5000/api/itineraries', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('token')}` // token for authentication
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     },
     body: JSON.stringify(itineraryData)
   })
@@ -75,15 +144,19 @@ function saveItinerary() {
     .then(data => {
       if (data.success) {
         console.log("Itinerary saved successfully:", data.itinerary);
-        alert('Itinerary saved successfully!');
+        
+        // Show success popup and redirect to itineraries page when confirmed
+        showPopup("Success", "Itinerary saved successfully!", "View My Itineraries", "success", () => {
+          window.location.href = 'itineraries.html';
+        });
       } else {
         console.error('Error saving itinerary:', data.message);
-        alert('Error saving itinerary. Please try again.');
+        showPopup("Error", data.message || 'Error saving itinerary. Please try again.', "OK", "error");
       }
     })
     .catch(err => {
       console.error('Error:', err);
-      alert('Error saving itinerary. Please try again.');
+      showPopup("Error", "Error saving itinerary. Please try again.", "OK", "error");
     });
 }
 

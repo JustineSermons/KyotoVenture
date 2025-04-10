@@ -139,7 +139,9 @@ function displayActivities(activities, totalDays) {
         const emptyCollectionMessage = document.createElement("div");
         emptyCollectionMessage.classList.add("empty-collection-message");
         emptyCollectionMessage.innerHTML = `
-            <p> Activities will automatically go under Day 1 but can be switched to different days depending on how many days are in the collection.
+            <i class="fa-solid fa-circle-info info-icon"></i>
+            <p> Activities will automatically go under Day 1. They can be switched to 
+            different days depending on how many days are in the collection.
             Activities can only be added if the collection is set as your default itinerary. </p>
         `;
         container.appendChild(emptyCollectionMessage);
@@ -170,13 +172,13 @@ function displayActivities(activities, totalDays) {
             container.appendChild(noActivitiesMessage);
 
             const browseActivitiesButton = document.createElement("button");
-            browseActivitiesButton.classList.add("browseButton")
-            browseActivitiesButton.textContent = "Browse Activities";
+browseActivitiesButton.classList.add("browseButton");
+browseActivitiesButton.innerHTML = `<i class="fa-solid fa-search browseIcon"></i> Browse Activities`;
 
-            // event listener for browse activities button to go to the activities.html page
-            browseActivitiesButton.addEventListener("click", function() {
-                window.location.href = "activities.html";
-            });
+// Add the event listener as you had before
+browseActivitiesButton.addEventListener("click", function() {
+    window.location.href = "activities.html";
+});
 
             container.appendChild(browseActivitiesButton);
         } else {
