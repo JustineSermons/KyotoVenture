@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Validation check if passwords match
     if (password !== confirm_password) {
       error_message.textContent = "Passwords do not match!";
-      error_message.style.color = "red";
+      error_message.style.color = "#E03C31";
       return;
     }
 
@@ -36,13 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = '/login.html';  // Redirects to login page after successful signup
       } else {
         error_message.textContent = data.message || "Signup failed, please try again.";
-        error_message.style.color = "red";
+        error_message.style.color = "#E03C31";
       }
     })
     .catch(error => {
       console.error('Error:', error);
       error_message.textContent = "Something went wrong. Please try again later.";
-      error_message.style.color = "red";
+      error_message.style.color = "#E03C31";
     });
   });
 });

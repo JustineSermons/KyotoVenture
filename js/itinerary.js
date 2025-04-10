@@ -177,7 +177,7 @@ buttonsContainer.classList.add('popup-buttons');
 // Create confirm button
 const confirmButton = document.createElement('button');
 confirmButton.classList.add('popup-confirm-button');
-confirmButton.textContent = 'Confirm';
+confirmButton.textContent = 'Delete';
 confirmButton.onclick = () => {
   deleteItinerary(itineraryId);
   popup.remove();
