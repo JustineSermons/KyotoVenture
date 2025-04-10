@@ -28,20 +28,15 @@ async function fetchItineraries() {
     const data = await response.json();
     console.log("Fetched data:", data);
 
-    // Check if user and itineraries exist in response
-    if (!data || !data.user || !data.itineraries) {
-      throw new Error("Invalid response format");
-    }
-
     // Display username of logged-in user
     const usernameElement = document.getElementById("username");
     console.log("Username element found:", usernameElement);
 
-    if (usernameElement) {
+    if (usernameElement && data.user) {
       usernameElement.textContent = data.user;
       console.log("Updated username:", data.user);
     } else {
-      console.warn("Username element not found in the HTML.");
+      console.warn("Username element not found in the HTML or no user in response.");
     }
 
     // Display itineraries of logged-in user
@@ -52,15 +47,14 @@ async function fetchItineraries() {
       return;
     }
 
-   
     itinerariesContainer.innerHTML = "";
 
     // display selected itinerary collection in dropdown
     const dropdown = document.getElementById("itinerary-dropdown");
     dropdown.innerHTML = "";
 
-    if (data.itineraries.length === 0) {
-      itinerariesContainer.innerHTML = "<p>No itineraries found.</p>";
+    if (!data.itineraries || data.itineraries.length === 0) {
+      itinerariesContainer.innerHTML = "<p class='no-itineraries-message'>No itineraries found. Create some itinerary collections!</p>";
       dropdown.innerHTML = "<option>No itineraries</option>";
     } else {
       // displays itinerary collections in dropdown (order of recently added first to first made as the last)

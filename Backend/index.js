@@ -233,25 +233,31 @@ app.post("/api/itineraries", authenticateToken, (req, res) => {
 app.get("/api/itineraries", authenticateToken, (req, res) => {
   const userId = req.user.id;
 
-  db.query(
-    "SELECT users.username, itineraries.* FROM itineraries INNER JOIN users ON itineraries.user_id = users.id WHERE itineraries.user_id = $1 ORDER BY itineraries.created_at DESC",
-    [userId]
-  )
-    .then((result) => {
-      if (result.rows.length === 0) {
-        return res
-          .status(404)
-          .json({ message: "No itineraries found for this user." });
+  // Get username separately
+  db.query("SELECT username FROM users WHERE id = $1", [userId])
+    .then((userResult) => {
+      if (userResult.rows.length === 0) {
+        return res.status(404).json({ message: "User not found." });
       }
-      res
-        .status(200)
-        .json({ user: result.rows[0].username, itineraries: result.rows });
+      
+      const username = userResult.rows[0].username;
+      
+      // Then get itineraries
+      return db.query("SELECT * FROM itineraries WHERE user_id = $1 ORDER BY created_at DESC", [userId])
+        .then((itinerariesResult) => {
+          // Return username with itineraries (even if empty - even when theres no itinerary collections made, show the username)
+          res.status(200).json({ 
+            user: username, 
+            itineraries: itinerariesResult.rows 
+          });
+        });
     })
     .catch((err) => {
       console.error(err);
-      res
-        .status(500)
-        .json({ message: "Error fetching itineraries.", error: err.message });
+      res.status(500).json({ 
+        message: "Error fetching itineraries.", 
+        error: err.message 
+      });
     });
 });
 
