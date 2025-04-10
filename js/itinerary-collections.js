@@ -131,7 +131,21 @@ function displayActivities(activities, totalDays) {
 
     container.innerHTML = "";  
     
-    // Loop through each day in the itinerary
+    // Check if the entire collection is empty (no activities added yet)
+    const isCollectionEmpty = !activities || activities.length === 0;
+    
+    // For empty collections, add a small message at the top for helpful info
+    if (isCollectionEmpty) {
+        const emptyCollectionMessage = document.createElement("div");
+        emptyCollectionMessage.classList.add("empty-collection-message");
+        emptyCollectionMessage.innerHTML = `
+            <p> Activities will automatically go under Day 1 but can be switched to different days depending on how many days are in the collection.
+            Activities can only be added if the collection is set as your default itinerary. </p>
+        `;
+        container.appendChild(emptyCollectionMessage);
+    }
+    
+    // Loop through each day in the itinerary (all day separators for each day in the collection will be shown)
     for (let i = 1; i <= totalDays; i++) {
         // Create day separator
         const daySeparator = document.createElement("div");
@@ -146,9 +160,9 @@ function displayActivities(activities, totalDays) {
         container.appendChild(daySeparator);
         
         // Get activities for this day
-        const dayActivities = activities.filter(activity => activity.day === i);
+        const dayActivities = isCollectionEmpty ? [] : activities.filter(activity => activity.day === i);
 
-        // If no activities for this day, display a message
+        // For no activities on a day, display a message and browse button
         if (dayActivities.length === 0) {
             const noActivitiesMessage = document.createElement("p");
             noActivitiesMessage.classList.add("no-activities-message");

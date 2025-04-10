@@ -195,32 +195,44 @@ app.post("/api/itineraries", authenticateToken, (req, res) => {
 
   console.log("Destinations Array:", destinationsArray); // log formatted array
 
-  console.log("Inserting itinerary:", {
-    userId,
-    itinerary_name,
-    destinationsArray,
-    budget,
-    start_date,
-    end_date,
-    days_added,
-  });
+    // First, check if this is the user's first itinerary to determine if it should be default
+    db.query("SELECT COUNT(*) FROM itineraries WHERE user_id = $1", [userId])
+    .then((countResult) => {
+      const isFirstItinerary = parseInt(countResult.rows[0].count) === 0;
+      console.log("Is first itinerary:", isFirstItinerary);
 
-  // inserts the itinerary collection into the postgresql database
-  db.query(
-    "INSERT INTO itineraries (user_id, itinerary_name, destinations, budget, start_date, end_date, days_added, created_at) VALUES ($1, $2, $3, $4, $5, $6, $7, NOW()) RETURNING *",
-    [
-      userId,
-      itinerary_name,
-      destinationsArray,
-      budget,
-      start_date,
-      end_date,
-      days_added,
-    ]
-  )
-    .then((result) =>
-      res.status(201).json({ success: true, itinerary: result.rows[0] })
-    )
+      // If this is the first itinerary, set is_default to TRUE, otherwise FALSE
+      const isDefault = isFirstItinerary;
+      
+      console.log("Inserting itinerary:", {
+        userId,
+        itinerary_name,
+        destinationsArray,
+        budget,
+        start_date,
+        end_date,
+        days_added,
+        isDefault
+      });
+
+      // inserts the itinerary collection into the postgresql database
+      return db.query(
+        "INSERT INTO itineraries (user_id, itinerary_name, destinations, budget, start_date, end_date, days_added, is_default, created_at) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW()) RETURNING *",
+        [
+          userId,
+          itinerary_name,
+          destinationsArray,
+          budget,
+          start_date,
+          end_date,
+          days_added,
+          isDefault
+        ]
+      );
+    })
+    .then((result) => {
+      res.status(201).json({ success: true, itinerary: result.rows[0] });
+    })
     .catch((err) => {
       console.error("Error creating itinerary:", err);
       res
@@ -472,13 +484,8 @@ app.get(
 
       const result = await db.query(query, [itineraryId]);
 
-      if (result.rows.length === 0) {
-        return res
-          .status(404)
-          .json({ error: "No activities found for this itinerary" });
-      }
-
-      res.status(200).json(result.rows);
+      // Always return a 200 status with the activities array (even if empty)
+      return res.status(200).json(result.rows);
     } catch (error) {
       console.error("Error fetching activities:", error);
       res.status(500).json({ error: "Server error" });
