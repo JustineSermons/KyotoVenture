@@ -287,5 +287,10 @@ document
   }
 });
 
+// create itinerary button event listener
+document.getElementById("createItineraryButton").addEventListener("click", function() {
+  window.location.href = "create-itinerary.html";
+});
+
 // Gets logged-in user itineraries when the page loads
 fetchItineraries();
