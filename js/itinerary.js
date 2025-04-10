@@ -69,10 +69,15 @@ async function fetchItineraries() {
         const itineraryElement = document.createElement("div");
         itineraryElement.classList.add("itin-container");
 
+        // Only show the star icon next to the default itinerary the user sets
+        const starIcon = itinerary.is_default 
+          ? '<i class="fa-solid fa-star star"></i> ' 
+          : '';
+
         itineraryElement.innerHTML = `
         <div class="itin-container">
           <p class="defitin">
-            <span <i class="fa-solid fa-star star"></i></span> ${itinerary.itinerary_name}
+            ${starIcon}${itinerary.itinerary_name}
           </p>
           <div class="image-container">
             <img class="bamb" src="${
