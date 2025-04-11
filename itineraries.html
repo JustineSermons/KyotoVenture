@@ -75,12 +75,15 @@
         
 
         .button-group {
-            grid-row: 4;
-            grid-column: 2;
-            gap: 1px;
-            height: 35px;
-            margin-left: 150px;
-            
+          grid-row: 4;
+    grid-column: 2;
+    gap: 10px;
+    height: auto;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
         }
 
         .wish {
@@ -133,14 +136,23 @@
            
         }
         .itinerary {
-            background-color: #013D79;
-          color: white;
-          border-radius: 10px;
-          width: 120px;
-          margin-right: 150px;
-          
+          background-color: #013D79;
+    color: #fff;
+    font-size: 20px;
+    border: none;
+    padding: 16px 32px;
+    margin-right: 180px;
+    cursor: pointer;
+    border-radius: 5px;
         }
-        
+
+        .itinerary:hover {
+    background-color: #CFF3D7;
+    color: #013D79;
+    font-weight: 700;
+    border-color: #013D79;
+}
+
         .profpic {
             position: absolute;
             margin-left: 80px;
@@ -258,17 +270,25 @@
     margin-bottom: 120px;
 }
 #itinerary-dropdown {
-    display: inline-block; 
+  display: inline-block; 
     width: auto; 
-    padding: 8px;
-    margin-left: 80px;
+    padding: 6px;
+    font-size: 20px; 
+    font-weight: 500;
+    margin-left: 10px;
     background-color: #CFF3D7;
     border: none;
     border-radius: 8px;
+    height: 30px;
+    font-size: 14px;
+    vertical-align: middle;
 }
 .setDefault {
   margin-left: 40px;
-  font-weight: bold;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin: 0;
 }
         
 .move-activity-popup {
