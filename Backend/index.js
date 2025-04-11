@@ -132,7 +132,7 @@ const authenticateToken = (req, res, next) => {
   jwt.verify(token, JWT_SECRET_KEY, (err, user) => {
     if (err) {
       // If token verification fails
-      return res.status(403).json({ message: "Token is invalid or expired." });
+      return res.status(403).json({ message: "You are currently logged out. Login to access more site features!" });
     }
 
     req.user = user; // Attach user info to the request object
@@ -145,7 +145,7 @@ app.post("/api/logout", (req, res) => {
   // Sends a message
   res
     .status(200)
-    .json({ message: "Logged out successfully. (Token cleared in frontend)" });
+    .json({ message: "Logged out successfully." });
 });
 
 // Example protected route that requires authentication

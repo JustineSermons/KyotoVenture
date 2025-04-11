@@ -401,6 +401,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .querySelector(".goToMyItineraryButton")
     .addEventListener("click", function () {
-      window.location.href = "my-itinerary.html";
+      window.location.href = "itineraries.html";
     });
 });
