@@ -1,3 +1,10 @@
+// Switch between local and production
+// When running locally, http://localhost:5000 will be used and in production, https://kyotoventure.onrender.com will be used
+const API_URL = 
+window.location.hostname === "localhost"
+  ? "http://localhost:5000" // local backend
+  : "https://kyotoventure.onrender.com"; //production url on Render
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Login JavaScript loaded!');
     
@@ -14,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = emailInput.value;
         const password = passwordInput.value;
   
-        fetch('http://localhost:5000/api/login', {  
+        fetch(`${API_URL}/api/login`, {  
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })

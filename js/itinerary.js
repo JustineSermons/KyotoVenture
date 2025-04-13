@@ -1,6 +1,12 @@
 //////////// Retrieve User Itineraries and Display Username of Logged-in User
 // Itineraries Page to display all of the user's collections
 
+// Switch between local and production
+// When running locally, http://localhost:5000 will be used and in production, https://kyotoventure.onrender.com will be used
+const API_URL = 
+window.location.hostname === "localhost"
+  ? "http://localhost:5000" // local backend
+  : "https://kyotoventure.onrender.com"; //production url on Render
 
 // Fetch itineraries from the backend and display them
 async function fetchItineraries() {
@@ -9,7 +15,7 @@ async function fetchItineraries() {
 
     const token = localStorage.getItem("token");
 
-    const response = await fetch("http://localhost:5000/api/itineraries", {
+    const response = await fetch(`${API_URL}/api/itineraries`, {
       method: "GET",
       credentials: "include",
       headers: {
@@ -208,7 +214,7 @@ try {
   const token = localStorage.getItem("token");
 
   const response = await fetch(
-    `http://localhost:5000/api/itineraries/${itineraryId}`,
+    `${API_URL}/api/itineraries/${itineraryId}`,
     {
       method: "DELETE",
       credentials: "include",
@@ -242,7 +248,7 @@ try {
   const token = localStorage.getItem("token");
 
   const response = await fetch(
-    `http://localhost:5000/api/itineraries/default/${itineraryId}`,
+    `${API_URL}/api/itineraries/default/${itineraryId}`,
     {
       method: "PUT",
       credentials: "include",

@@ -17,10 +17,25 @@ const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || "7d";
 // Allow frontend requests (node http server) - type http-server on the terminal in the frontend KyotoVenture folder to start it on localhost:8080
 app.use(
   cors({
-    origin: ["http://127.0.0.1:8080", "http://localhost:8080"],
+    origin: [
+      "http://127.0.0.1:8080", // Local testing
+      "http://localhost:8080", // Local testing
+      "https://kyoto-venture.vercel.app/", // Production frontend on Vercel
+    ],
     credentials: true,
   })
 );
+
+//Local:
+// Frontend - local server using http-server in the terminal
+// Backend- cd Backend and run node index.js or nodemon index.js
+
+//Production (deployed):
+// Frontend - Deployed on Vercel
+// Backend - Deployed on Render
+// PostgreSQL Database - Deployed on Supabase with url in DATABASE_URL
+
+// Backend connects to Supabase for production and in the local pgadmin postgresql database when run locally
 
 // Login Route - Generates a JWT token when the user logs in
 app.post("/api/login", (req, res) => {
@@ -596,4 +611,9 @@ app.put("/api/itinerary/:itineraryId/activities/:activityId/move", authenticateT
 });
 
 
-app.listen(5000, () => console.log("Backend running on http://localhost:5000"));
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Backend running on http://localhost:${PORT}`);
+});
+

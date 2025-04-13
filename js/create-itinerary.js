@@ -1,3 +1,10 @@
+// Switch between local and production
+// When running locally, http://localhost:5000 will be used and in production, https://kyotoventure.onrender.com will be used
+const API_URL = 
+window.location.hostname === "localhost"
+  ? "http://localhost:5000" // local backend
+  : "https://kyotoventure.onrender.com"; //production url on Render
+
 // Gets the "Add Day" option/button, the container for days, and the Save Itinerary button
 const addDayText = document.getElementById('add-day');
 const daysContainer = document.getElementById('days-container');
@@ -132,7 +139,7 @@ function saveItinerary() {
   showPopup("Processing", "Saving your itinerary...", "Please wait", "info");
 
   // Send data to the backend
-  fetch('http://localhost:5000/api/itineraries', {
+  fetch(`${API_URL}/api/itineraries`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

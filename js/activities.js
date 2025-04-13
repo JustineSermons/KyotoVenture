@@ -1,3 +1,10 @@
+// Switch between local and production
+// When running locally, http://localhost:5000 will be used and in production, https://kyotoventure.onrender.com will be used
+const API_URL = 
+window.location.hostname === "localhost"
+  ? "http://localhost:5000" // local backend
+  : "https://kyotoventure.onrender.com"; //production url on Render
+
 // Search Feature
 document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.querySelector(".activities-search-box input");
@@ -366,7 +373,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      const response = await fetch("http://localhost:5000/api/activities/add", {
+      const response = await fetch(`${API_URL}/api/activities/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
