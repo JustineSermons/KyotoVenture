@@ -20,11 +20,14 @@ app.use(
     origin: [
       "http://127.0.0.1:8080", // Local testing
       "http://localhost:8080", // Local testing
-      "https://kyoto-venture.vercel.app/", // Production frontend on Vercel
+      "https://kyoto-venture.vercel.app", // Production frontend on Vercel
     ],
     credentials: true,
   })
 );
+
+// handle preflight requests
+app.options('*', cors());
 
 //Local:
 // Frontend - local server using http-server in the terminal
