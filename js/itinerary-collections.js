@@ -5,7 +5,7 @@
 const API_URL =
   window.location.hostname === "localhost"
     ? "http://localhost:5000" // local backend
-    : "https://kyotoventure.onrender.com"; //production url on Render
+    : "https://kyotoventure-production.up.railway.app"; //production url on Render
 
 async function fetchItineraryDetails() {
   try {

@@ -3,7 +3,7 @@
 const API_URL = 
 window.location.hostname === "localhost"
   ? "http://localhost:5000" // local backend
-  : "https://kyotoventure.onrender.com"; //production url on Render
+  : "https://kyotoventure-production.up.railway.app"; //production url on Render
 
 // Gets the "Add Day" option/button, the container for days, and the Save Itinerary button
 const addDayText = document.getElementById('add-day');
