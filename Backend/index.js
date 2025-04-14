@@ -40,6 +40,14 @@ app.options('*', cors());
 
 // Backend connects to Supabase for production and in the local pgadmin postgresql database when run locally
 
+app.get("/", (req, res) => {
+  res.status(200).json({ 
+    message: "KyotoVenture API is running",
+    dbConnected: !!db.connection.stream, // Check if DB is connected
+    env: process.env.NODE_ENV || 'development'
+  });
+});
+
 // Login Route - Generates a JWT token when the user logs in
 app.post("/api/login", (req, res) => {
   const { email, password } = req.body; // Gets the email and password from the request
@@ -615,8 +623,19 @@ app.put("/api/itinerary/:itineraryId/activities/:activityId/move", authenticateT
 
 
 const PORT = process.env.PORT || 5000;
+const NODE_ENV = process.env.NODE_ENV || 'development';
 
 app.listen(PORT, () => {
-  console.log(`Backend running on http://localhost:${PORT}`);
+  if (NODE_ENV === 'production') {
+    console.log(`Server running in production mode on port ${PORT}`);
+    console.log(`It can be accessed on the deployed frontend (https://kyoto-venture.vercel.app)`);
+  } else {
+    console.log(`Server running locally at http://localhost:${PORT}`);
+  }
 });
 
+if (process.env.RENDER_EXTERNAL_URL) {
+  console.log(`Render external URL: ${process.env.RENDER_EXTERNAL_URL}`);
+}
+console.log(`Environment: ${NODE_ENV}`);
+console.log(`Connected to DB: ${process.env.DATABASE_URL ? 'Supabase (remote)' : 'Local PostgreSQL'}`);
