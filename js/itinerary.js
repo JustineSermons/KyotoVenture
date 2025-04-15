@@ -278,14 +278,20 @@ try {
 }
 
 // dropdown change event listener
-document
-.getElementById("itinerary-dropdown")
-.addEventListener("change", function () {
-  const selectedItineraryId = this.value;
-  if (selectedItineraryId) {
-    setDefaultItinerary(selectedItineraryId);
+document.addEventListener("DOMContentLoaded", function () {
+  const dropdown = document.getElementById("itinerary-dropdown");
+  if (dropdown) {
+    dropdown.addEventListener("change", function () {
+      const selectedItineraryId = this.value;
+      if (selectedItineraryId) {
+        setDefaultItinerary(selectedItineraryId);
+      }
+    });
+  } else {
+    console.error("Dropdown isn't on the page.");
   }
 });
+
 
 // create itinerary button event listener
 document.getElementById("createItineraryButton").addEventListener("click", function() {
