@@ -277,26 +277,37 @@ try {
 }
 }
 
-// dropdown change event listener
-document.addEventListener("DOMContentLoaded", function () {
-  const dropdown = document.getElementById("itinerary-dropdown");
-  if (dropdown) {
-    dropdown.addEventListener("change", function () {
-      const selectedItineraryId = this.value;
-      if (selectedItineraryId) {
-        setDefaultItinerary(selectedItineraryId);
-      }
-    });
+// Only setup event listeners if on the itineraries.html page
+document.addEventListener("DOMContentLoaded", function() {
+  // Check if we're on the itineraries page with page-specific elements
+  const isItinerariesPage = document.getElementById("itineraries-container") !== null;
+  
+  if (isItinerariesPage) {
+    console.log("On itineraries page - setting up event listeners");
+    
+    // dropdown change listener
+    const dropdown = document.getElementById("itinerary-dropdown");
+    if (dropdown) {
+      dropdown.addEventListener("change", function() {
+        const selectedItineraryId = this.value;
+        if (selectedItineraryId) {
+          setDefaultItinerary(selectedItineraryId);
+        }
+      });
+    }
+    
+    // create itinerary button listener
+    const createButton = document.getElementById("createItineraryButton");
+    if (createButton) {
+      createButton.addEventListener("click", function() {
+        window.location.href = "create-itinerary.html";
+      });
+    }
+    
+    // Gets logged-in user itineraries when the page loads
+    fetchItineraries();
   } else {
-    console.error("Dropdown isn't on the page.");
+    console.log("Not on itineraries page - skipping related setup");
   }
 });
 
-
-// create itinerary button event listener
-document.getElementById("createItineraryButton").addEventListener("click", function() {
-  window.location.href = "create-itinerary.html";
-});
-
-// Gets logged-in user itineraries when the page loads
-fetchItineraries();

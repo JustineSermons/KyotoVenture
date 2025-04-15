@@ -2,20 +2,29 @@
 
 // Switch between local and production
 // When running locally, http://localhost:5000 will be used and in production, https://kyotoventure.onrender.com will be used
-const API_URL =
-  window.location.hostname === "localhost"
+if (typeof API_URL === 'undefined') {
+  // Define API_URL only if it doesn't already exist
+  var API_URL = window.location.hostname === "localhost"
     ? "http://localhost:5000" // local backend
-    : "https://kyotoventure.onrender.com"; //production url on Render
+    : "https://kyotoventure.onrender.com"; // production url on Render
+}
+
+console.log("Itinerary Collections script loaded - using API:", API_URL);
 
 async function fetchItineraryDetails() {
   try {
     const itineraryId = localStorage.getItem("selectedItineraryId");
+    console.log("Selected itinerary ID:", itineraryId);
+    
     if (!itineraryId) {
       console.error("No itinerary ID found in localStorage");
+      document.getElementById("collection-title").textContent = "No itinerary selected";
       return;
     }
 
     const token = localStorage.getItem("token");
+    console.log("Token available:", !!token);
+    
     if (!token) {
       console.error("No authentication token found.");
       return;
@@ -23,7 +32,6 @@ async function fetchItineraryDetails() {
 
     const response = await fetch(`${API_URL}/api/itineraries/${itineraryId}`, {
       method: "GET",
-      credentials: "include",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -46,8 +54,10 @@ async function fetchItineraryDetails() {
     displayItineraryDetails(data.itinerary);
   } catch (error) {
     console.error("Error fetching itinerary details:", error);
+    document.getElementById("collection-title").textContent = "Error loading itinerary";
   }
 }
+
 
 function displayItineraryDetails(itinerary) {
   const itineraryTitle = document.getElementById("collection-title");
