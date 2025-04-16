@@ -139,7 +139,7 @@ function saveItinerary() {
   showPopup("Processing", "Saving your itinerary...", "Please wait", "info");
 
   // Send data to the backend
-  fetch(`${API_URL}/api/itineraries`, {
+  fetch(`${window.API_URL}/api/itineraries`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

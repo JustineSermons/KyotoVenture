@@ -2,14 +2,6 @@
 
 // Switch between local and production
 // When running locally, http://localhost:5000 will be used and in production, https://kyotoventure.onrender.com will be used
-if (typeof API_URL === 'undefined') {
-  // Define API_URL only if it doesn't already exist
-  var API_URL = window.location.hostname === "localhost"
-    ? "http://localhost:5000" // local backend
-    : "https://kyotoventure.onrender.com"; // production url on Render
-}
-
-console.log("Itinerary Collections script loaded - using API:", API_URL);
 
 async function fetchItineraryDetails() {
   try {
@@ -30,7 +22,7 @@ async function fetchItineraryDetails() {
       return;
     }
 
-    const response = await fetch(`${API_URL}/api/itineraries/${itineraryId}`, {
+    const response = await fetch(`${window.API_URL}/api/itineraries/${itineraryId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -116,7 +108,7 @@ async function fetchActivities(itineraryId, totalDays) {
     }
 
     const response = await fetch(
-      `${API_URL}/api/itinerary/${itineraryId}/activities`,
+      `${window.API_URL}/api/itinerary/${itineraryId}/activities`,
       {
         method: "GET",
         headers: {
@@ -371,7 +363,7 @@ async function moveActivity(activityId, newDay) {
     }
 
     const response = await fetch(
-      `${API_URL}/api/itinerary/${itineraryId}/activities/${activityId}/move`,
+      `${window.API_URL}/api/itinerary/${itineraryId}/activities/${activityId}/move`,
       {
         method: "PUT",
         headers: {
@@ -453,7 +445,7 @@ async function deleteActivity(activityId) {
 
       // Deletion
       const response = await fetch(
-        `${API_URL}/api/itinerary/${itineraryId}/activities/${activityId}`,
+        `${window.API_URL}/api/itinerary/${itineraryId}/activities/${activityId}`,
         {
           method: "DELETE",
           headers: {

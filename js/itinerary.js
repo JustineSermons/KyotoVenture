@@ -3,10 +3,6 @@
 
 // Switch between local and production
 // When running locally, http://localhost:5000 will be used and in production, https://kyotoventure.onrender.com will be used
-const API_URL = 
-window.location.hostname === "localhost"
-  ? "http://localhost:5000" // local backend
-  : "https://kyotoventure.onrender.com"; //production url on Render
 
 // Fetch itineraries from the backend and display them
 async function fetchItineraries() {
@@ -15,7 +11,7 @@ async function fetchItineraries() {
 
     const token = localStorage.getItem("token");
 
-    const response = await fetch(`${API_URL}/api/itineraries`, {
+    const response = await fetch(`${window.API_URL}/api/itineraries`, {
       method: "GET",
       credentials: "include",
       headers: {
@@ -214,7 +210,7 @@ try {
   const token = localStorage.getItem("token");
 
   const response = await fetch(
-    `${API_URL}/api/itineraries/${itineraryId}`,
+    `${window.API_URL}/api/itineraries/${itineraryId}`,
     {
       method: "DELETE",
       credentials: "include",
@@ -248,7 +244,7 @@ try {
   const token = localStorage.getItem("token");
 
   const response = await fetch(
-    `${API_URL}/api/itineraries/default/${itineraryId}`,
+    `${window.API_URL}/api/itineraries/default/${itineraryId}`,
     {
       method: "PUT",
       credentials: "include",
