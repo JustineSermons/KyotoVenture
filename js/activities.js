@@ -373,7 +373,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      const response = await fetch(`${window.API_URL}/api/activities/add`, {
+      const response = await fetch(`${API_URL}/api/activities/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

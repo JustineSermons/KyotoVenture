@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = emailInput.value;
         const password = passwordInput.value;
   
-        fetch(`${window.API_URL}/api/login`, {  
+        fetch(`${API_URL}/api/login`, {  
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })

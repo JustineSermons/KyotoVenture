@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Send signup request to backend API
-    fetch(`${window.API_URL}/api/signup`, { 
+    fetch(`${API_URL}/api/signup`, { 
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, email, password })
