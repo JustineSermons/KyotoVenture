@@ -3,193 +3,80 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Footer</title>
+    <title>Destinations</title>
+    <!-- Link to Google Fonts for Lato -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" href="css/destinations.css" />
+    <link rel="stylesheet" href="css/styles-two.css" /> -->
+    <link rel="stylesheet" href="css/footer.css">
     <script
       src="https://kit.fontawesome.com/5e8cd39909.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-
-        p {
-            font-family: Lato;
-        }
-
-      .logo img {
-        height: 100.66px;
-        width: 110.66px;
-      }
-
-
-      .destination {
-        display: flex;
-        flex-direction: column;
-        grid-column: 2;
-        margin-right: 50px;
-      }
-      .destination p {
-        margin: 0;
-        line-height: 2;
-      }
-
-      .guide {
-        display: flex;
-        flex-direction: column;
-        grid-column: 3;
-        margin-right: 50px;
-
-      }
-      .guide p {
-        margin: 0;
-        line-height: 2;
-      }
-
-      .support {
-        display: flex;
-        flex-direction: column;
-        grid-column: 4;
-        margin-right: 50px;
-
-      }
-      .support p {
-        margin: 0;
-        line-height: 2;
-      }
-
-      .subscribe {
-        background-color: #013d79;
-        color: white;
-        border: none;
-        height: 30px;
-        width: 80px;
-        border-radius: 8px;
-        margin-top: 10px;
-      }
-
-      .news {
-        display: flex;
-        flex-direction: column;
-        grid-column: 5;
-        padding-left: 80px;
-      }
-      .news p {
-        margin: 0;
-        line-height: 1.5;
-      }
-
-      .logo-grid {
-        display: grid;
-        grid-template-rows: auto;
-        grid-template-columns: repeat(5, auto);
-        background-color: #cdbade;
-        padding-top: 40px;
-        padding-bottom: 40px;
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-
-      .logo {
-        grid-column: 1;
-        margin-right: 50px;
-        margin-top: 30px;
-        padding-left: 15px;
-
-      }
-
-      .email-bar {
-        color: #ebe3f2;
-      }
-
-      .receive {
-        font-size: 13px;
-        padding-bottom: 5px;
-      }
-
-    </style>
   </head>
-
   <body>
-    
-  
+  <!-- Footer Section -->
+  <footer>
+    <div class="logo-grid">
+      <!-- Logo Section -->
+      <a href="index.html" class="logo-link">
+        <div class="logo">
+          <img
+            src="assets/images/grouplogo.png"
+            alt="KyotoVenture Logo"
+            class="logo-image"
+          />
+          <img
+            src="assets/images/grouplogotxt.png"
+            alt="KyotoVenture Text"
+            class="logo-text"
+          />
+        </div>
+      </a>
+      <!-- Destinations Section -->
+      <div class="destination">
+        <p><strong>Destinations</strong></p>
+        <p><a href="kyoto.html">Kyoto City</a></p>
+        <p><a href="arashiyama.html">Arashiyama</a></p>
+        <p><a href="nara.html">Nara</a></p>
+        <p><a href="uji.html">Uji</a></p>
+        <p><a href="kameoka.html">Kameoka</a></p>
+      </div>
 
-  <div class="logo-grid">
-    <div class="logo">
-      <img src="assets/images/KyoVenLogo.png" alt="Logo" />
+      <!-- Support Section -->
+      <div class="support">
+        <p><strong>Support</strong></p>
+        <p><a href="faqs.html">FAQs</a></p>
+        <p><a href="contact-us.html">Contact Us</a></p>
+        <p><a href="about-us.html">About Us</a></p>
+      </div>
+
+      <!-- Newsletter Section -->
+      <div class="news">
+        <strong>
+          <p>Join Our Newsletter </p>
+        </strong>
+        <p class="receive">
+          Receive news about the latest and most popular activities and events
+          in Kyoto!
+        </p>
+        <div class="email-bar">
+          <form action="/email" method="get">
+            <input
+              type="text"
+              name="q"
+              placeholder="Your Email"
+              class="email-input"
+            />
+          </form>
+          <button class="subscribe">Subscribe</button>
+        </div>
+      </div>
     </div>
-  <div class="destination">
-    <p><strong>Destinations</strong></p>
-  <p>Kyoto City</p>
-  <p>Arashiyama</p>
-  <p>Nara</p>
-  <p>Uji</p>
-  <p>Kameoka</p>
-  </div>
-
-  <div class="guide">
-    <strong><p>Guides</p></strong>
-    <p>Guides</p>
-    <p>Community Guides</p>
-  </div>
-
-  <div class="support">
-    <strong><p>Support</p></strong>
-    <p>FAQs</p>
-    <p>Contact Us</p>
-    <p>About Us</p>
-  </div>
-
-  <div class="news">
-  <strong><p>Join Our Newsletter </p></strong>
-  <p class="receive">
-    Receive news about the latest and most 
-    popular activities and events in Kyoto!   
-  </p>
-
-  <div class="email-bar">
-    <form action="/email" method="get">
-      <input
-        type="text"
-        name="q"
-        placeholder="Your Email"
-        class="email-input"
-      />
-    </form>
-
-    <button class="subscribe">Subscribe</button>
-  </div>
-
-  </div>
-</div>
-</body>
-
-
-
-
-    
-  <!--<p>
-      Destinations
-      <br />
-      <br />
-      Kyoto City
-      <br />
-      <br />
-      Arashiyama
-      <br />
-      <br />
-      Nara
-      <br />
-      <br />
-      Uji
-      <br />
-      <br />
-      Kameoka
-      <br />
-      <br />
-    </p>-->
-  </div>
+  </footer>
+    <script src="js/destinations.js"></script>
+  </body>
 </html>
