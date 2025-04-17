@@ -4,60 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arashiyama</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/arashiyama.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script
     src="https://kit.fontawesome.com/5e8cd39909.js"
     crossorigin="anonymous"
   ></script>
 </head>
 <body>
-   <!-- Navigation -->
-   <nav class="kyotoVentureNavBar">
-    <div class="kyotoVentureLogo">
-      <div class="logoImage"><img src="assets/icons/logo.svg"></div>
-      <div class="title">KyotoVenture</div>
-    </div>
-    <ul class="navbar-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="#">Destinations</a>
+         <!-- Navigation -->
+<nav class="kyotoVentureNavBar">
+  <div class="kyotoVentureLogo">
+    <div class="logoImage"><img src="assets/icons/logo.svg"></div>
+    <div class="title">KyotoVenture</div>
+  </div>
+  <ul class="navbar-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="destinations.html">Destinations</a>
       <ul class="dropdown">
-        <li><a href="destinations.html">Destinations</a></li>
         <li><a href="kyoto.html">Kyoto City</a></li>
         <li><a href="arashiyama.html">Arashiyama</a></li>
         <li><a href="nara.html">Nara</a></li>
         <li><a href="uji.html">Uji</a></li>
         <li><a href="kameoka.html">Kameoka</a></li>
       </ul>
-      </li>
+    </li>
 
-      <li><a href="activities.html">Activities</a></li>
-      <li><a href="">Itineraries</a>
+    <li><a href="activities.html">Activities</a></li>
+    <li><a href="itineraries.html">Itineraries</a>
       <ul class="dropdown">
-        <li><a href="itineraries.html">Itineraries</a></li>
         <li><a href="create-itinerary.html">Create Itinerary</a></li>
-        <li><a href="wishlist.html">Wishlist</a></li>
+        <!-- <li><a href="wishlist.html">Wishlist</a></li> -->
       </ul>
-      </li>
-      <li><a href="">About</a>
+    </li>
+    <li><a href="about-us.html">About</a>
       <ul class="dropdown">
-        <li><a href="about-us.html">About</a></li>
+        <!-- <li><a href="about-us.html">About</a></li> -->
         <li><a href="contact-us.html">Contact Us</a></li>
         <li><a href="faqs.html">FAQs</a></li>
       </ul>
-      </li>
-      <li><a href="#">
-      <div class="profile-icon"><i class="fa-regular fa-user navProfileIcon"></i></div></a>
+    </li>
+
+    <!-- Logged Out Users -->
+    <li id="logged-out" class="profile-menu">
+      <a href="#">
+        <div class="profile-icon"><i class="fa-regular fa-user navProfileIcon"></i></div>
+      </a>
       <ul class="dropdown">
         <li><a href="login.html">Login</a></li>
         <li><a href="signup.html">Sign Up</a></li>
       </ul>
     </li>
-    </ul>
-    <!-- <div class="profile-container">
-    </div> -->
-  </nav>
-  <!-- End of Nav -->
+
+    <!-- Logged In Users -->
+    <li id="logged-in" class="profile-menu">
+      <a href="#">
+        <div class="profile-icon"><i class="fa-regular fa-user navProfileIcon"></i></div>
+      </a>
+      <ul class="dropdown">
+        <li><a href="#" onclick="logout()">Logout</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    <!-- End of Nav -->
+ 
   <!-- Arashiyama Banner Section -->
   <section class="arashiyama-banner">
     <div class="rectangle-background"></div>
