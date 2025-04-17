@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -11,18 +13,32 @@ body {
 .kyotoVentureNavBar {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: #F8FDF9;
   height: 96px;
+  position: sticky;
+  top: 0;  
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 .kyotoVentureLogo {
   display: flex;
   align-items: center;
+  color: #013D79;
+  font-family: "Noto Serif", serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: normal;
+  padding: 0px 0px;
   gap: 8px;
-}
+  margin-left: 80px;
+  margin-right: 300px;
+}      
+
 .title {
   color: #013d79;
   font-size: 1.5em;
+  margin-bottom: 4px;
 }
 .navbar-links {
   list-style: none;
@@ -526,28 +542,115 @@ Sort, Area, Price, Interests */
 } */
 
 /* Hero Section */
-.container-hero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 24px 0;
-  position: relative;
-}
-
-.hero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 50vh;
-  overflow: hidden;
-}
-
-.hero img {
-  width: 100%;
-  height: 50vh;
-  object-fit: cover;
-}
+ /* Styles Hero Div */
+  /* Gallery Section Styling */
+  .hero-gallery {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    text-align: center;
+    margin-top: 0 !important; /* Override any inherited margin with !important */
+    margin-top: -50px !important; /* Use a small negative margin to eliminate any gap */
+    padding-top: 0 !important;
+    z-index: 1; 
+  }
+  /* Gallery Div Styling */
+  .hero-gallery .gallery-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 700px;
+    transition: transform 0.5s ease; /* Added ease transition for the container */
+  }
+  /* Gallery Display Styling */
+  .hero-gallery .gallery {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease; /* Added ease transition */
+  }
+  /* Gallery Img Styling */
+  .hero-gallery .gallery-image {
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+    display: none; /* Hide images by default */
+    transition: transform 0.5s ease; /* Added ease transition */
+  }
+  
+  .hero-gallery .gallery-image:first-child {
+    display: block; /* Display the first image */
+  }
+  
+  /* Gallery Arrow Styling */
+  .hero-gallery .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(182, 154, 208, 0.9); /* B69AD0 with 80% opacity */
+    color: white;
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    padding: 32px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-gallery .arrow:hover {
+    border: 3px solid rgba(1, 61, 121);
+    color: rgba(1, 61, 121);
+    background-color: rgba(188, 240, 198, 0.9);
+  }
+  /* Gallery Arrow Positioning */
+  .hero-gallery .left-arrow {
+    left: 80px;
+  }
+  /* Gallery Arrow Positioning */
+  .hero-gallery .right-arrow {
+    right: 80px;
+  }
+  /* Gallery Label Styling */
+  .hero-gallery .gallery-label {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(1, 61, 121, 0.7);
+    color: white;
+    padding: 20px 20px;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 4px;
+  }
+  
+  .hero-gallery .details-button {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #013d79;
+    color: white;
+    border: none;
+    padding: 20px 60px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 8px;
+  }
+  
+  .hero-gallery .details-button:hover {
+    background-color: #bcf0c6;
+    color: #013d79;
+    font-weight: 600;
+  }
+  
 
 .title-button {
   position: absolute;
