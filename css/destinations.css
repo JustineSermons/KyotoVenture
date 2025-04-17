@@ -389,9 +389,9 @@ body {
   padding: 8px 12px;
   font-size: 18px;
   color: white;
-  background-color: #A7A7A7; /* Grey background */
+  background-color: rgba(1, 61, 121, 0.7);; /* Grey background */
   border: none;
-  border-radius: 0px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
@@ -419,9 +419,9 @@ body {
   padding: 8px 12px;
   font-size: 18px;
   color: white;
-  background-color: #A7A7A7; /* Grey background */
+  background-color: rgba(1, 61, 121, 0.7); /* Grey background */
   border: none;
-  border-radius: 0px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
@@ -449,9 +449,9 @@ body {
   padding: 8px 12px;
   font-size: 18px;
   color: white;
-  background-color: #A7A7A7; /* Grey background */
+  background-color: rgba(1, 61, 121, 0.7); /* Grey background */
   border: none;
-  border-radius: 0px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
