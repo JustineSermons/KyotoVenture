@@ -836,3 +836,10 @@ padding-bottom: 5px;
   margin: 16px 0;
   font-size: 16px;
 }
+
+.homeStar {
+  color: #a481c4;
+}
+.homeRating {
+  margin-left: 4px;
+}
