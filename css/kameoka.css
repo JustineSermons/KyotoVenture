@@ -46,7 +46,7 @@ body {
     width: 300px;
     height: 75px;
     left: 50%; /* Center horizontally */
-    top: 90px; /* Move the box closer to the top */
+    top: 130px; /* Move the box closer to the top */
     transform: translateX(-50%); /* Center the container exactly */
     background-color: rgba(1, 61, 121, 0.7);
     border-radius: 4px;  /* Gray background */
