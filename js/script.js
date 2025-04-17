@@ -17,7 +17,6 @@ window.addEventListener("resize", function() {
   }
 });
 
-
 let currentIndex = 0;
 const images = document.querySelectorAll(".gallery-image");
 const galleryLabel = document.querySelector(".gallery-label");
@@ -36,12 +35,8 @@ function showImage(index) {
     img.style.display = i === index ? "block" : "none";
   });
 
-  // Check if galleryLabel exists before modifying it
-  if (galleryLabel) {
-    galleryLabel.textContent = imageDetails[index].label;
-  } else {
-    console.error("galleryLabel element not found!");
-  }
+  // Update the label text
+  galleryLabel.textContent = imageDetails[index].label;
 }
 
  // Event listeners for the next and previous arrow buttons
