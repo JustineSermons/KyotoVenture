@@ -1,0 +1,708 @@
+/* Global reset for all pages */
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Makes all pages have 0 margins since the browser adds its own margins */
+  body {
+    margin: auto 0;
+    font-family: "Lato", sans-serif;
+  }
+  
+  /* Reset everything */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Lato', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove padding if any */
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+    
+   /* Styles Hero Div */
+  /* Gallery Section Styling */
+  .hero-gallery {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    text-align: center;
+  }
+  /* Gallery Div Styling */
+  .hero-gallery .gallery-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 600px;
+    transition: transform 0.5s ease; /* Added ease transition for the container */
+  }
+  /* Gallery Display Styling */
+  .hero-gallery .gallery {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease; /* Added ease transition */
+  }
+  /* Gallery Img Styling */
+  .hero-gallery .gallery-image {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    display: none; /* Hide images by default */
+    transition: transform 0.5s ease; /* Added ease transition */
+  }
+  
+  .hero-gallery .gallery-image:first-child {
+    display: block; /* Display the first image */
+  }
+  
+  /* Gallery Arrow Styling */
+  .hero-gallery .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(182, 154, 208, 0.9); /* B69AD0 with 80% opacity */
+    color: white;
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    padding: 32px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-gallery .arrow:hover {
+    border: 3px solid rgba(1, 61, 121);
+    color: rgba(1, 61, 121);
+    background-color: rgba(188, 240, 198, 0.9);
+  }
+  /* Gallery Arrow Positioning */
+  .hero-gallery .left-arrow {
+    left: 20px;
+  }
+  /* Gallery Arrow Positioning */
+  .hero-gallery .right-arrow {
+    right: 20px;
+  }
+  /* Gallery Label Styling */
+  .hero-gallery .gallery-label {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(1, 61, 121, 0.8);
+    color: white;
+    padding: 20px 20px;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 4px;
+  }
+  
+  .hero-gallery .details-button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #013d79;
+    color: white;
+    border: none;
+    padding: 20px 60px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 8px;
+  }
+  
+  .hero-gallery .details-button:hover {
+    background-color: #bcf0c6;
+    color: #013d79;
+    font-weight: 600;
+  }
+  
+  /* Start Here! Section */
+  .travel-highlights {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400; /* Normal weight */
+    font-size: 32px; /* Same size as the map heading */
+    text-align: left; /* Align the text to the left */
+    color: #000000; /* Same color as the map text */
+    margin-bottom: 20px; /* Space below the heading */
+    margin-left: 370px; /* Align text to the left of the container */
+    padding-left: 20px; /* Add padding to the left for alignment */
+  }
+  
+  .gallery {
+    margin-top: 100px;
+  }
+  
+  /* Start Here! Section */
+  .gallery-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 10px;
+    width: 1062px; /* Adjusted to match the map width */
+    margin: 0 auto; /* Centers the gallery container */
+  }
+  
+  
+  .gallery-container > :nth-child(1) {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+  
+  .gallery-container > :nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  
+  .gallery-container > :nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  
+  .gallery-container > :nth-child(4) {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    height: 100%;
+  }
+  
+  .gallery-item-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .gallery-item {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  
+  .image-caption {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: #DEF7E4;
+    color: black;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 8px;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+    
+    /* Start Here! Section */
+    .travel-highlights {
+      font-family: 'Lato', sans-serif;
+      font-weight: 400; /* Normal weight */
+      font-size: 32px; /* Same size as the map heading */
+      text-align: left; /* Align the text to the left */
+      color: #000000; /* Same color as the map text */
+      margin-bottom: 20px; /* Space below the heading */
+      margin-left: 370px; /* Align text to the left of the container */
+      padding-left: 20px; /* Add padding to the left for alignment */
+    }
+    
+    .gallery {
+      margin-top: 100px;
+    }
+    
+    /* Start Here! Section */
+    .gallery-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 10px;
+      width: 1062px; /* Adjusted to match the map width */
+      margin: 0 auto; /* Centers the gallery container */
+    }
+    
+    
+    .gallery-container > :nth-child(1) {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+    }
+    
+    .gallery-container > :nth-child(2) {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    
+    .gallery-container > :nth-child(3) {
+      grid-column: 2;
+      grid-row: 2;
+    }
+    
+    .gallery-container > :nth-child(4) {
+      grid-column: 3;
+      grid-row: 1 / span 2;
+      height: 100%;
+    }
+    
+    .gallery-item-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .gallery-item {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    
+    .image-caption {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background-color: #DEF7E4;
+      color: black;
+      padding: 10px 15px;
+      font-size: 14px;
+      border-radius: 8px;
+      transition: opacity 0.3s ease;
+      opacity: 0;
+    }
+  
+    
+    /* KyotoVenture Navigation */
+    .kyotoVentureNavBar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #F8FDF9;
+      height: 96px;
+    }
+    .kyotoVentureLogo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .title {
+      color: #013d79;
+      font-size: 1.5em;
+    }
+    .navbar-links {
+      list-style: none;
+      display: flex;
+      gap: 48px;
+    }
+    .navbar-links li {
+      position: relative;
+    }
+    .navbar-links a {
+      text-decoration: none;
+      font-size: 1.25em;
+      display: block;
+      color: #013D79;
+    }
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #EBFBEE;
+      list-style: none;
+      padding: 8px 0;
+      min-width: 134px;
+      height: auto;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .dropdown li a {
+      font-size: 1em;
+      color: #013D79;
+      padding: 8px;
+      display: block;
+    }
+    .dropdown li a:hover {
+      font-size: 1em;
+      color: #013D79;
+      padding: 8px;
+      display: block;
+      font-weight: bold;
+    }
+    .navbar-links li:hover .dropdown {
+      display: block;
+    }
+    
+    /* Scrollable Cards Section */
+    .scrollable-cards-section {
+      margin-top: 150px; /* Add more space between Section 2 and Section 3 */
+      margin-bottom: 150px; /* Add more space below Section 3 */
+      padding: 40px 20px; /* Keep existing padding */
+      background-color: #ffffff; /* Force white background */
+      color: #000; /* Ensure text remains black */
+      border: none; /* Ensure no borders are affecting the background */
+      box-shadow: none; /* Remove any shadow that may affect visual appearance */
+    }
+    
+    /* Ensure the parent element does not interfere with the background */
+    body {
+      background-color: #ffffff !important; /* Ensure the overall background is white */
+    }
+    
+    .scrollable-cards-heading {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: left;
+      font-weight: normal;
+      margin-left: 70px;
+    }
+    
+    .scrollable-cards-wrapper {
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 0 70px;
+    }
+    
+    .scroll-arrow {
+      background-color: #cdbade;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .scroll-arrow:hover {
+      background-color: #bfa4c3;
+    }
+    
+    .left-arrow {
+      position: absolute;
+      left: 0;
+      z-index: 1;
+    }
+    
+    .right-arrow {
+      position: absolute;
+      right: 0;
+      z-index: 1;
+    }
+    
+    .scrollable-cards-container {
+      display: flex;
+      gap: 24px;
+      overflow: hidden;
+    }
+    
+    .scrollable-card {
+      flex: none;
+      width: 300px;
+      height: 440px;
+      background: #f6f6f6;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transform: scale(1);
+      transition: transform 0.3s ease-in-out;
+      transform-origin: center;
+    }
+    
+    .scrollable-card:hover {
+      transform: scale(1.05);
+    }
+    
+    .card-image {
+      height: 260px;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      object-fit: cover;
+    }
+    
+    .interest-area {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.9rem;
+      color: #717171;
+    }
+    
+    .interest-area .dot {
+      width: 6px;
+      height: 6px;
+      background-color: #858585;
+      border-radius: 50%;
+    }
+    
+    .rating {
+      font-size: 1rem;
+      color: #000;
+      font-weight: normal;
+      text-align: left; /* Align the stars to the left */
+      margin: 0; /* Remove extra margin */
+      display: inline-flex; /* Use flexbox for alignment */
+      align-items: center; /* Vertically align items */
+    }
+    
+    .rating .star {
+      margin-right: 2px; /* Small space between stars */
+      font-size: 1.2rem; /* Adjust star size to match text */
+      line-height: 1; /* Ensure the stars and text align properly */
+    }
+    
+    .card-content {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .card-content h3 {
+      font-size: 1.2rem;
+      color: #000;
+    }
+    
+    .kyofood {
+      text-align: left;
+      font-size: 0.9rem; /* Adjust if needed */
+      color: #000000;
+      margin: 0; /* Remove any default margin */
+    }
+    
+    
+    /* Hide logged-in and logged-out menus*/
+    #logged-in {
+      display: none;
+    }
+    
+    #logged-out {
+      display: block;
+    }
+    
+    /* .profile-container {
+      position: relative;
+      margin-left: 32px;
+    } */
+    /* .profile-icon {
+     width: 40px;
+     height: 40px;
+    } */
+    /* .profile-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      list-style: none;
+      padding: 10px 0;
+      min-width: 150px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .profile-dropdown li a {
+      color: black;
+      padding: 8px;
+      display: block;
+    }
+    .profile-container:hover .profile-dropdown {
+      display: block;
+    } */
+  
+    /* Footer Styling */
+  footer {
+      background-color: #cdbade;
+      padding: 20px 20px; /* Reduced padding for a shorter footer */
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center content horizontally */
+      justify-content: flex-start; /* Align to the top */
+      text-align: center; /* Center text within the footer */
+      width: 100%;
+      position: relative; /* Allow positioning of the logo */
+      min-height: 200px; /* Reduced minimum height for shorter footer */
+    }
+    
+    /* Logo Section */
+    .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: absolute; /* Absolute positioning to control placement */
+      left: 10%;
+      top: 50%; /* Vertically center the logo - change this value to adjust the vertical position */
+      transform: translateY(-50%); /* Adjust for exact vertical centering */
+      width: 88px;
+      height: 110.95px;
+      text-align: center; /* Ensure the logo text is centered */
+    }
+    
+    .logo-image {
+      width: 100px;
+      height: auto;
+    }
+    
+    .logo-text {
+      width: 166px;
+      height: 33px;
+      font-family: 'Noto Serif', serif;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 33px;
+      color: #1F2B59;
+      margin-top: 8px;
+      text-align: center; /* Ensures text is centered */
+    }
+    
+    /* Grid Layout for Footer Sections */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr); /* 5 equal-width columns */
+      gap: 20px;
+      color: #000;
+      width: 100%; /* Ensure the grid takes the full width of the footer */
+      justify-items: flex-start; /* Align items to the left */
+      text-align: left; /* Align text to the left for sections */
+    }
+    
+    /* Align destination, support, and newsletter sections */
+    .destination, .support, .news {
+      display: flex;
+      left: 50%;
+      flex-direction: column;
+      align-items: flex-start; /* Align items to the left */
+      text-align: left; /* Ensure text is aligned to the left */
+      justify-content: flex-start; /* Align to the top */
+      width: 100%; /* Ensure they take full width */
+      margin-top: 30px;
+      margin-bottom: 20px; /* Add margin to create equal spacing between sections */
+      padding-left: 100px; /* Shift the sections to the right without affecting text size */
+      margin-left: 100px; /* Move sections towards the right */
+    }
+    
+    /* Main category text */
+    .destination p, .support p {
+      font-size: 20px;
+      margin: 0;
+      line-height: 2;
+      font-weight: bold;
+      color: black; /* Ensure category text remains black */
+    }
+    
+    /* Subcategory links - Apply opacity change only on hover */
+    .destination a, .support a, .news a {
+      font-weight: normal;
+      color: black;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+    
+    .destination a:hover, .support a:hover, .news a:hover {
+      opacity: 0.6; /* Dim opacity on hover */
+    }
+    
+    /* Newsletter Section */
+    .news {
+      position: relative;
+      width: 350px; /* Adjust width to match the size of the other sections */
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 29px;
+      color: #000;
+      padding: 0;
+      padding-left: 20px; /* Move the newsletter section to the right */
+      text-align: left; /* Align text left */
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start; /* Align contents to the left */
+      justify-content: flex-start; /* Align contents at the top */
+      margin-left: 100px; /* Shift the newsletter section more to the right */
+      margin-top: 30px;
+    }
+    
+    /* Adjust the paragraph text below the header */
+    .news p {
+      font-size: 24px;
+      margin-bottom: 10px; /* Reduced margin for better alignment */
+      font-weight: bold;
+      text-align: left; /* Ensure alignment matches other sections */
+    }
+    
+    .news .receive {
+      font-size: 16px !important; /* Force smaller font size */
+      margin-bottom: 15px; /* Adjust bottom margin for alignment */
+      font-weight: 400 !important; /* Force unbold text */
+      color: #000;
+    }
+    
+    /* Adjust email bar layout to stack the input and button vertically */
+    .email-bar {
+      display: flex;
+      flex-direction: column; /* Stack input and button vertically */
+      justify-content: flex-start; /* Align to the start of the section */
+      align-items: flex-start; /* Align to the start of the section */
+      margin-bottom: 15px;
+      gap: 10px; /* Reduce space between input and button */
+      width: 100%; /* Ensure the email bar takes full width of the parent */
+    }
+    
+    .email-input {
+      width: 100%; /* Full width of the newsletter section */
+      height: 40px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 2px solid #ccc;
+      background-color: white; /* White background for the input box */
+    }
+    
+    .subscribe {
+      width: 35%; /* Full width of the newsletter section */
+      background-color: #013D79; /* Blue */
+      color: white;
+      font-size: 18px;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .subscribe:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+    }
