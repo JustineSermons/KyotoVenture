@@ -1,15 +1,6 @@
-* {
-    box-sizing: border-box;
-  }
-  /* makes all pages have 0 margins since the browser adds its own margins */
-  body {
-    margin: auto 0;
-    font-family: "Lato", sans-serif;
-  }
-  
-  
-  
-  /* Reset everything */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
+ /* Reset everything */
   * {
     margin: 0;
     padding: 0;
@@ -17,7 +8,6 @@
   }
   
   body {
-    font-family: 'Lato', sans-serif;
     background-color: #f9f9f9;
     margin: 0; /* Remove default margin */
     padding: 0; /* Remove padding if any */
@@ -28,111 +18,8 @@
     margin-bottom: 20px;
   }
   
-  /* Styles Hero Div */
-  /* Gallery Section Styling */
-  .hero-gallery {
-    position: relative;
-    width: 100%;
-    margin: auto;
-    overflow: hidden;
-    text-align: center;
-  }
-  /* Gallery Div Styling */
-  .hero-gallery .gallery-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 600px;
-    transition: transform 0.5s ease; /* Added ease transition for the container */
-  }
-  /* Gallery Display Styling */
-  .hero-gallery .gallery {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.5s ease; /* Added ease transition */
-  }
-  /* Gallery Img Styling */
-  .hero-gallery .gallery-image {
-    width: 100%;
-    height: 600px;
-    object-fit: cover;
-    display: none; /* Hide images by default */
-    transition: transform 0.5s ease; /* Added ease transition */
-  }
-  
-  .hero-gallery .gallery-image:first-child {
-    display: block; /* Display the first image */
-  }
-  
-  /* Gallery Arrow Styling */
-  .hero-gallery .arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(182, 154, 208, 0.9); /* B69AD0 with 80% opacity */
-    color: white;
-    border: 3px solid rgba(255, 255, 255, 0.9);
-    padding: 32px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .hero-gallery .arrow:hover {
-    border: 3px solid rgba(1, 61, 121);
-    color: rgba(1, 61, 121);
-    background-color: rgba(188, 240, 198, 0.9);
-  }
-  /* Gallery Arrow Positioning */
-  .hero-gallery .left-arrow {
-    left: 20px;
-  }
-  /* Gallery Arrow Positioning */
-  .hero-gallery .right-arrow {
-    right: 20px;
-  }
-  /* Gallery Label Styling */
-  .hero-gallery .gallery-label {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(1, 61, 121, 0.8);
-    color: white;
-    padding: 20px 20px;
-    font-size: 20px;
-    font-weight: 500;
-    border-radius: 4px;
-  }
-  
-  .hero-gallery .details-button {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #013d79;
-    color: white;
-    border: none;
-    padding: 20px 60px;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: 500;
-    border-radius: 8px;
-  }
-  
-  .hero-gallery .details-button:hover {
-    background-color: #bcf0c6;
-    color: #013d79;
-    font-weight: 600;
-  }
-  
+
+
   /* Start Here! Section */
   .travel-highlights {
     font-family: 'Lato', sans-serif;
@@ -215,66 +102,7 @@
     opacity: 0;
   }
   
-  /* KyotoVenture Navigation */
-  .kyotoVentureNavBar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #F8FDF9;
-    height: 96px;
-  }
-  .kyotoVentureLogo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .title {
-    color: #013d79;
-    font-size: 1.5em;
-  }
-  .navbar-links {
-    list-style: none;
-    display: flex;
-    gap: 48px;
-  }
-  .navbar-links li {
-    position: relative;
-  }
-  .navbar-links a {
-    text-decoration: none;
-    font-size: 1.25em;
-    display: block;
-    color: #013D79;
-  }
-  .dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #EBFBEE;
-    list-style: none;
-    padding: 8px 0;
-    min-width: 134px;
-    height: auto;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  .dropdown li a {
-    font-size: 1em;
-    color: #013D79;
-    padding: 8px;
-    display: block;
-  }
-  .dropdown li a:hover {
-    font-size: 1em;
-    color: #013D79;
-    padding: 8px;
-    display: block;
-    font-weight: bold;
-  }
-  .navbar-links li:hover .dropdown {
-    display: block;
-  }
-  
+
   /* Scrollable Cards Section */
   .scrollable-cards-section {
     margin-top: 150px; /* Add more space between Section 2 and Section 3 */
@@ -419,52 +247,6 @@
     font-size: 0.9rem; /* Adjust if needed */
     color: #000000;
     margin: 0; /* Remove any default margin */
-  }
-  
-  
-  /* Hide logged-in and logged-out menus*/
-  #logged-in {
-    display: none;
-  }
-  
-  #logged-out {
-    display: block;
-  }
-  
-  /* .profile-container {
-    position: relative;
-    margin-left: 32px;
-  } */
-  /* .profile-icon {
-   width: 40px;
-   height: 40px;
-  } */
-  /* .profile-dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: white;
-    list-style: none;
-    padding: 10px 0;
-    min-width: 150px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  }
-  .profile-dropdown li a {
-    color: black;
-    padding: 8px;
-    display: block;
-  }
-  .profile-container:hover .profile-dropdown {
-    display: block;
-  } */
-  
-  .activitiesBreadcrumb {
-    color: black !important;
-    text-decoration: none !important;
-  }
-  .activitiesBreadcrumb:hover {
-    color: #99b1c9 !important;
   }
   
   .fa-filter {
@@ -882,36 +664,6 @@
     font-size: 2rem;
     color: #1f2b59;
   } */
-  
-  /* Hero Section */
-  .container-hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 24px 0;
-    position: relative;
-  }
-  
-  .hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 50vh;
-    overflow: hidden;  
-  }
-  
-  .hero-gallery {
-    position: relative; /* Ensures absolute elements position correctly */
-    text-align: center;
-  }
-  
-  .hero-gallery .gallery-image {
-    width: 100%;
-    height: 600px; /* Adjust if needed */
-    object-fit: cover; /* Ensures the image fills the banner but might crop it */
-    display: none;
-  }
   
   .hero img {
     width: 100%;
