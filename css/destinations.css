@@ -427,7 +427,7 @@ body {
 
 /* Fushimi Inari Shrine (Below Kinkakuji) */
 .featured-item.fushimi {
-  background: url('/assets/images/fushimi_inari_temple1.jpg');
+  background: url('/assets/images/fushimi\ inari\ shrine.jpg');
   height: 250px; /* Adjusted height */
   width: 100%;
   border-radius: 6px;
