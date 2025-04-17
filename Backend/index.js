@@ -224,11 +224,13 @@ app.post("/api/itineraries", authenticateToken, (req, res) => {
     // First, check if this is the user's first itinerary to determine if it should be default
     db.query("SELECT COUNT(*) FROM itineraries WHERE user_id = $1", [userId])
     .then((countResult) => {
-      const isFirstItinerary = parseInt(countResult.rows[0].count) === 0;
-      console.log("Is first itinerary:", isFirstItinerary);
-
-      // If this is the first itinerary, set is_default to TRUE, otherwise FALSE
-      const isDefault = isFirstItinerary;
+    const itineraryCount = Number(countResult.rows[0].count);
+    console.log("Current itinerary count:", itineraryCount);
+    
+    // If this is the first itinerary (count is 0), set is_default to TRUE
+    const isDefault = itineraryCount === 0;
+    
+    console.log("Setting is_default to:", isDefault);
       
       console.log("Inserting itinerary:", {
         userId,
