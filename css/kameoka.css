@@ -19,7 +19,7 @@ body {
 .kameoka-banner {
     position: absolute;
     width: 100%; /* Full width */
-    height: 900px; /* Set the height to 900px */
+    height: 600px; /* Set the height to 900px */
     left: 0;
     top: 0; /* Ensure the banner starts at the very top */
     z-index: 1; /* Ensure it stays above other content */
@@ -48,7 +48,8 @@ body {
     left: 50%; /* Center horizontally */
     top: 90px; /* Move the box closer to the top */
     transform: translateX(-50%); /* Center the container exactly */
-    background: #9d9d9d; /* Gray background */
+    background-color: rgba(1, 61, 121, 0.7);
+    border-radius: 4px;  /* Gray background */
 }
 
 /* Text inside the gray box */
@@ -65,14 +66,14 @@ body {
 .breadcrumb {
   position: absolute;
   width: auto; /* Let the width be determined by the content */
-  left: 16px;
-  top: 910px; /* Position it directly below the banner (900px banner height) */
+  left: 80px;
+  top: 612px;  /* Position it directly below the banner (900px banner height) */
   display: flex; /* Use flexbox to align the breadcrumb items horizontally */
   align-items: center; /* Vertically align the links */
   font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 18px;
   line-height: 29px; /* Line height same as the box height */
   color: #000000; /* Black text color */
   text-decoration: none; /* Remove underline */
@@ -80,7 +81,7 @@ body {
 }
 
 .breadcrumb a {
-  margin-right: 8px; /* Optional: Space between links */
+  margin-right: 2px; /* Optional: Space between links */
 }
 
 .breadcrumb .dot {
@@ -93,7 +94,7 @@ body {
   
 .body-text {
     position: relative;
-    margin-top: 1100px; /* Adjusted margin-top to move it further down */
+    margin-top: 620px; /* Adjusted margin-top to move it further down */
     padding: 20px;
     width: 846px;
     margin-left: auto;
